@@ -1,0 +1,23 @@
+{
+  "name": "@rs/forum",
+  "version": "0.0.0",
+  "description": "",
+  "keywords": [],
+  "author": "Diego Fernandes <diego.schell.f@gmail.com>",
+  "license": "MIT",
+  "main": "lib/forum.js",
+  "directories": {
+    "lib": "lib",
+    "test": "__tests__"
+  },
+  "files": [
+    "lib"
+  ],
+  "publishConfig": {
+    "registry": "https://registry.yarnpkg.com"
+  },
+  "scripts": {
+    "tsc": "tsc"
+  },
+  "dependencies": {}
+}
