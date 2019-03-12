@@ -1,0 +1,17 @@
+language: node_js
+node_js:
+  - "10.9.0"
+
+cache:
+  yarn: true
+  directories:
+    - "node_modules"
+
+install:
+  - yarn global add lerna jest
+  - lerna bootstrap
+
+deploy:
+  provider: script
+  script: "yarn run publish"
+  skip_cleanup: true
