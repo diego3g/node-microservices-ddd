@@ -1,11 +1,8 @@
 {
-  "name": "@rs/forum",
-  "version": "0.0.0",
-  "description": "",
-  "keywords": [],
-  "author": "Diego Fernandes <diego.schell.f@gmail.com>",
+  "name": "@rs/auth",
+  "version": "0.1.0",
   "license": "MIT",
-  "main": "lib/forum.js",
+  "main": "lib/index.js",
   "directories": {
     "lib": "lib",
     "test": "__tests__"
@@ -17,7 +14,10 @@
     "registry": "https://registry.yarnpkg.com"
   },
   "scripts": {
-    "tsc": "tsc"
+    "tsc": "tsc",
+    "test": "jest"
   },
-  "dependencies": {}
+  "devDependencies": {
+    "jest": "^24.4.0"
+  }
 }

@@ -1,0 +1,23 @@
+{
+  "name": "@rs/education",
+  "version": "0.1.0",
+  "license": "MIT",
+  "main": "lib/index.js",
+  "directories": {
+    "lib": "lib",
+    "test": "__tests__"
+  },
+  "files": [
+    "lib"
+  ],
+  "publishConfig": {
+    "registry": "https://registry.yarnpkg.com"
+  },
+  "scripts": {
+    "tsc": "tsc",
+    "test": "jest"
+  },
+  "devDependencies": {
+    "jest": "^24.4.0"
+  }
+}

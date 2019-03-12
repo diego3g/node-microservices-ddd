@@ -1,4 +1,9 @@
-node_modules/
+# Lerna
 lerna-debug.log
+
+# NPM
+node_modules/
 npm-debug.log
-packages/*/lib
+
+# Packages
+server/*/lib
