@@ -1,7 +1,6 @@
 {
   "name": "@rocketseat/client",
   "version": "0.1.0",
-  "private": true,
   "dependencies": {
     "@types/jest": "24.0.11",
     "@types/node": "11.11.1",
