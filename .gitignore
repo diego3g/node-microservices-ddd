@@ -6,4 +6,5 @@ node_modules/
 npm-debug.log
 
 # Packages
-server/*/lib
+client/*/dist
+server/*/dist

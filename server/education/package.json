@@ -1,23 +1,17 @@
 {
   "name": "@rocketseat/education",
-  "version": "0.1.1-beta.0",
+  "version": "0.1.0",
   "license": "MIT",
-  "main": "lib/index.js",
+  "main": "dist/index.js",
+  "types": "dist/index.d.ts",
   "directories": {
-    "lib": "lib",
+    "dist": "dist",
     "test": "__tests__"
   },
   "files": [
-    "lib"
+    "dist"
   ],
   "publishConfig": {
     "registry": "https://registry.yarnpkg.com"
-  },
-  "scripts": {
-    "tsc": "tsc",
-    "test": "jest"
-  },
-  "devDependencies": {
-    "jest": "^24.4.0"
   }
 }

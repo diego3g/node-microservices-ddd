@@ -1,21 +1,21 @@
 {
-  "name": "@rocketseat/core",
+  "name": "@rocketseat/client",
   "version": "0.1.0",
   "license": "MIT",
   "main": "dist/index.js",
   "types": "dist/index.d.ts",
-  "directories": {
-    "dist": "dist",
-    "test": "__tests__"
-  },
   "files": [
     "dist"
   ],
   "publishConfig": {
     "registry": "https://registry.yarnpkg.com"
   },
+  "devDependencies": {
+    "@types/react": "^16.8.7",
+    "@types/styled-components": "^4.1.12"
+  },
   "dependencies": {
-    "@rocketseat/auth": "^0.1.0",
-    "@rocketseat/education": "^0.1.0"
+    "react": "^16.8.4",
+    "styled-components": "^4.1.3"
   }
 }
