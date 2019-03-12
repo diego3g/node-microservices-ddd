@@ -14,6 +14,9 @@
   "publishConfig": {
     "registry": "https://registry.yarnpkg.com"
   },
+  "scripts": {
+    "tsc": "tsc --project ./tsconfig.build.json"
+  },
   "dependencies": {
     "@rocketseat/auth": "^0.1.0",
     "@rocketseat/education": "^0.1.0"

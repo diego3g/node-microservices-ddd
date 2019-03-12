@@ -1,10 +1,10 @@
 # Lerna
 lerna-debug.log
 
-# NPM
+# NPM / Yarn
 node_modules/
 npm-debug.log
+yarn-error.log
 
 # Packages
-client/*/dist
-server/*/dist
+dist

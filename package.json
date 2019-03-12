@@ -46,7 +46,6 @@
     "fix": "yarn lint:ts --fix",
     "prebuild": "run-p tsc lint",
     "build": "lerna exec --parallel 'BABEL_ENV=build babel src --root-mode upward --out-dir dist --source-maps --extensions .ts,.tsx --delete-dir-on-start --no-comments'",
-    "build:declarations": "lerna exec --parallel 'tsc --project ./tsconfig.build.json'",
-    "postbuild": "yarn build:declarations"
+    "build:declarations": "lerna exec --parallel 'yarn tsc'"
   }
 }

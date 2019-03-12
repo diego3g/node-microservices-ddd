@@ -13,5 +13,8 @@
   ],
   "publishConfig": {
     "registry": "https://registry.yarnpkg.com"
+  },
+  "scripts": {
+    "tsc": "tsc --project ./tsconfig.build.json"
   }
 }
