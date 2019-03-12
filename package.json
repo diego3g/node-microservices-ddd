@@ -11,6 +11,7 @@
     "typescript": "^3.3.3333"
   },
   "scripts": {
-    "publish": "lerna publish from-git --yes --npm-client yarn --npm-tag beta"
+    "lerna:version": "lerna version prerelease --preid beta",
+    "publish": "lerna publish from-git --yes --npm-client yarn --dist-tag beta"
   }
 }

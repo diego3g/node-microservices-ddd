@@ -2,6 +2,10 @@
   "packages": ["server/*", "client"],
   "npmClient": "yarn",
   "useWorkspaces": true,
-  "private": true,
-  "version": "0.1.0"
+  "version": "0.1.0",
+  "command": {
+    "publish": {
+      "allowBranch": "master"
+    }
+  }
 }
