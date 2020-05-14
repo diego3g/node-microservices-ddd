@@ -1,0 +1,17 @@
+{
+  "name": "@server/umbriel",
+  "version": "1.0.0",
+  "main": "index.js",
+  "license": "MIT",
+  "scripts": {
+    "build": "tsc",
+    "dev": "ts-node-dev -r tsconfig-paths/register --respawn --transpileOnly --no-notify src/index.ts"
+  },
+  "dependencies": {
+    "grpc": "^1.24.2"
+  },
+  "devDependencies": {
+    "ts-node-dev": "^1.0.0-pre.44",
+    "tsconfig-paths": "^3.9.0"
+  }
+}

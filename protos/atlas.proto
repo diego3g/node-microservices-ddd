@@ -1,0 +1,16 @@
+syntax = "proto3";
+
+package atlas;
+
+service Auth {
+  rpc Authenticate(AuthPayload) returns (AuthResult) {}
+}
+
+message AuthPayload {
+  string email = 1;
+  string password = 2;
+}
+
+message AuthResult {
+  string token = 1;
+}
