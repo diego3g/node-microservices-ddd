@@ -12,8 +12,9 @@
   ],  
   "scripts": {
     "build:server": "lerna run build --scope @server/*",
-    "build:protos:js": "grpc_tools_node_protoc --js_out=import_style=commonjs,binary:./protos/generated --grpc_out=./protos/generated --plugin=protoc-gen-grpc=./node_modules/.bin/grpc_tools_node_protoc_plugin -I ./protos protos/*.proto",
-    "build:protos:ts": "grpc_tools_node_protoc --plugin=protoc-gen-ts=./node_modules/.bin/protoc-gen-ts --ts_out=./protos/generated -I ./protos protos/*.proto"
+    "build:protos": "yarn build:protos:js && yarn build:protos:ts",
+    "build:protos:js": "grpc_tools_node_protoc --js_out=import_style=commonjs,binary:./protos/generated --grpc_out=./protos/generated --plugin=protoc-gen-grpc=./node_modules/.bin/grpc_tools_node_protoc_plugin -I ./protos/src protos/src/*.proto",
+    "build:protos:ts": "grpc_tools_node_protoc --plugin=protoc-gen-ts=./node_modules/.bin/protoc-gen-ts --ts_out=./protos/generated -I ./protos/src protos/src/*.proto"
   },
   "devDependencies": {
     "@types/google-protobuf": "^3.7.2",

@@ -1,0 +1,19 @@
+syntax = "proto3";
+
+package atlas;
+
+service Users {
+  rpc GetUsers(Empty) returns (UserList) {}
+}
+
+message Empty {}
+
+message User {
+  string id = 1;
+  string name = 2;
+  string email = 3;
+}
+
+message UserList {
+  repeated User users = 1;
+}

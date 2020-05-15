@@ -1,18 +1,19 @@
 import grpc from 'grpc';
 
-import { AuthClient } from '@protos/generated/atlas_grpc_pb';
-import { AuthPayload } from '@protos/generated/atlas_pb';
+import { UsersClient } from '@protos/generated/atlas_grpc_pb';
+import { Empty } from '@protos/generated/atlas_pb';
 
-const authClient = new AuthClient(
+const usersClient = new UsersClient(
   '127.0.0.1:50051',
-  grpc.credentials.combineChannelCredentials(grpc.credentials.createInsecure())
+  grpc.credentials.createInsecure()
 );
 
-const payload = new AuthPayload();
+const empty = new Empty();
 
-payload.setEmail('diego@example.com.br');
-payload.setEmail('123456');
+usersClient.getUsers(empty, (err, result) => {
+  const users = result.getUsersList();
 
-authClient.authenticate(payload, (err, result) => {
-  console.log('Token generated: ', result.getToken());
+  users.forEach((user) => {
+    console.log(user.getName());
+  });
 });
