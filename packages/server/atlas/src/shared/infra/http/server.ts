@@ -1,24 +1,28 @@
 import express from 'express';
-import fs from 'fs';
-import jwt from 'jsonwebtoken';
+// import fs from 'fs';
+// import jwt from 'jsonwebtoken';
 import 'express-async-errors';
-import auth from '../../../config/auth';
+import routes from './routes';
+// import auth from '../../../config/auth';
 
 const server = express();
 
-server.post('/sessions', async (request, response) => {
-  const userId = 'user-id';
+server.use(express.json());
+server.use(routes);
 
-  const privateKey = await fs.promises.readFile(auth.privateKeyPath);
+// server.post('/sessions', async (request, response) => {
+//   const userId = 'user-id';
 
-  const token = jwt.sign({}, privateKey, {
-    algorithm: 'RS256',
-    subject: userId,
-  });
+//   const privateKey = await fs.promises.readFile(auth.privateKeyPath);
 
-  return response.json({
-    token,
-  });
-});
+//   const token = jwt.sign({}, privateKey, {
+//     algorithm: 'RS256',
+//     subject: userId,
+//   });
+
+//   return response.json({
+//     token,
+//   });
+// });
 
 server.listen(3333);

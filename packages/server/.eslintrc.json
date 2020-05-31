@@ -24,7 +24,22 @@
     "prettier"
   ],
   "rules": {
+    "@typescript-eslint/no-unused-vars": [
+      "error",
+      {
+        "argsIgnorePattern": "_"
+      }
+    ],
+    "no-useless-constructor": "off",
+    "@typescript-eslint/interface-name-prefix": [
+      "error",
+      {
+        "prefixWithI": "always"
+      }
+    ],
+    "@typescript-eslint/camelcase": "off",
     "prettier/prettier": "error",
+    "class-methods-use-this": "off",
     "import/extensions": [
       "error",
       "ignorePackages",
@@ -35,7 +50,9 @@
   },
   "settings": {
     "import/resolver": {
-      "typescript": {}
+      "typescript": {
+        "directory": "packages/server/*/tsconfig.json"
+      }
     }
   }
 }

@@ -5,13 +5,9 @@
     "target": "ES2019",
     "sourceMap": true,                    
     "removeComments": true,               
-    "strict": true,                          
-    "baseUrl": "./",                      
-    "paths": {
-      "@protos/*": ["./protos/*"]
-    },                          
+    "strict": true,                                            
     "esModuleInterop": true,                 
     "skipLibCheck": true,                    
-    "forceConsistentCasingInFileNames": true 
+    "forceConsistentCasingInFileNames": true
   }
 }

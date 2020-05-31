@@ -1,26 +1,11 @@
 import grpc from 'grpc';
 
-import { IUsersServer, UsersService } from '@protos/generated/atlas_grpc_pb';
-import { UserList, User } from '@protos/generated/atlas_pb';
-import createImplementation from '../../utils/createImplementation';
+import { IUsersServer, UsersService } from '@protos/atlas_grpc_pb';
+import UserServiceImplementation from '../../../modules/users/infra/grpc/implementations/UserServiceImplementation';
 
 const server = new grpc.Server();
 
-const UserServiceImpl: IUsersServer = {
-  getUsers: createImplementation(() => {
-    const userList = new UserList();
-
-    const user = new User();
-
-    user.setId('user-id');
-    user.setName('asd');
-    user.setEmail('asd@das.com');
-
-    userList.addUsers(user);
-
-    return userList;
-  }),
-};
+const UserServiceImpl = new UserServiceImplementation();
 
 server.addService<IUsersServer>(UsersService, UserServiceImpl);
 

@@ -897,10 +897,10 @@
   dependencies:
     "@types/node" ">= 8"
 
-"@prisma/cli@^2.0.0-beta.5":
-  version "2.0.0-beta.5"
-  resolved "https://registry.yarnpkg.com/@prisma/cli/-/cli-2.0.0-beta.5.tgz#9116e9ba08131fce47bb96d9bc19e8a443a2b893"
-  integrity sha512-Kl3IqOq6sYdajnLA034SLJxFCB0IxXcrSLYR8W9XTOyt3RRP/TCUPp5yBVfO9B21Kwe9YrFujTbSD2qQaDg1QA==
+"@prisma/cli@^2.0.0-beta.7":
+  version "2.0.0-beta.7"
+  resolved "https://registry.yarnpkg.com/@prisma/cli/-/cli-2.0.0-beta.7.tgz#3184dd350b24d5eeee86a20408d366e5ce564d5a"
+  integrity sha512-Cjz7h3lfG3mFb9KMSEISe1/lgtvsMgq4EViqBJuysTj6BTDNbVMx+rSQTOdY9+8xJFGUkWszE+aAyHRFEcKgAA==
 
 "@prisma/client@^2.0.0-beta.5":
   version "2.0.0-beta.5"
@@ -4257,6 +4257,13 @@ jws@^3.2.2:
     jwa "^1.4.1"
     safe-buffer "^5.0.1"
 
+kafkajs@^1.12.0:
+  version "1.12.0"
+  resolved "https://registry.yarnpkg.com/kafkajs/-/kafkajs-1.12.0.tgz#50ad336baee95f3324af8ae8df6fadc96e07c613"
+  integrity sha512-Izkd9iFRgeeKaHEgVpGQH08ygzCbHSxTbnu8W3G3uiNaVjGibUTmTwjv1Qf2M8NORXcPfzwVyg6bBlVj4SKr9g==
+  dependencies:
+    long "^4.0.0"
+
 kind-of@^3.0.2, kind-of@^3.0.3, kind-of@^3.1.0, kind-of@^3.2.0:
   version "3.2.2"
   resolved "https://registry.yarnpkg.com/kind-of/-/kind-of-3.2.2.tgz#31ea21a734bab9bbb0f32466d893aea51e4a3c64"
@@ -4525,6 +4532,11 @@ logging-helpers@^1.0.0:
   dependencies:
     isobject "^3.0.0"
     log-utils "^0.2.1"
+
+long@^4.0.0:
+  version "4.0.0"
+  resolved "https://registry.yarnpkg.com/long/-/long-4.0.0.tgz#9a7b71cfb7d361a194ea555241c92f7468d5bf28"
+  integrity sha512-XsP+KhQif4bjX1kbuSiySJFNAehNxgLb6hPRGJ9QsUr8ajHkuXGdrHmFUTUUXhDwVX2R5bY4JNZEwbUiMhV+MA==
 
 long@~3:
   version "3.2.0"
@@ -6895,6 +6907,11 @@ typescript@^3.9.2:
   version "3.9.2"
   resolved "https://registry.yarnpkg.com/typescript/-/typescript-3.9.2.tgz#64e9c8e9be6ea583c54607677dd4680a1cf35db9"
   integrity sha512-q2ktq4n/uLuNNShyayit+DTobV2ApPEo/6so68JaD5ojvc/6GClBipedB9zNWYxRSAlZXAe405Rlijzl6qDiSw==
+
+typescript@^3.9.3:
+  version "3.9.3"
+  resolved "https://registry.yarnpkg.com/typescript/-/typescript-3.9.3.tgz#d3ac8883a97c26139e42df5e93eeece33d610b8a"
+  integrity sha512-D/wqnB2xzNFIcoBG9FG8cXRDjiqSTbG2wd8DMZeQyJlP1vfTkIxH4GKveWaEBYySKIg+USu+E+EDIR47SqnaMQ==
 
 uglify-js@^3.1.4:
   version "3.9.3"

@@ -2,6 +2,14 @@
   "extends": "../../../tsconfig.json",
   "compilerOptions": {
     "rootDir": "src",
-    "outDir": "dist"
+    "outDir": "dist",
+    "baseUrl": "./src",
+    "strictPropertyInitialization": false,
+    "paths": {
+      "@protos/*": ["../../../../protos/generated/*"],
+      "@modules/*": ["./modules/*"],
+      "@shared/*": ["./shared/*"],
+      "@config/*": ["./config/*"]
+    },
   }
 }
