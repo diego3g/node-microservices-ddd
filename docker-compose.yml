@@ -64,61 +64,61 @@ services:
 
   # Kong (API Gateway)
 
-  kong-database:
-    image: 'bitnami/postgresql'
-    restart: always
-    networks:
-      - kong-net
-    environment:
-      - POSTGRESQL_USERNAME=kong
-      - POSTGRESQL_PASSWORD=kong
-      - POSTGRESQL_DATABASE=kong
-    healthcheck:
-      test: ["CMD", "pg_isready", "-U", "kong"]
-      interval: 5s
-      timeout: 5s
-      retries: 5
+  # kong-database:
+  #   image: 'bitnami/postgresql'
+  #   restart: always
+  #   networks:
+  #     - kong-net
+  #   environment:
+  #     - POSTGRESQL_USERNAME=kong
+  #     - POSTGRESQL_PASSWORD=kong
+  #     - POSTGRESQL_DATABASE=kong
+  #   healthcheck:
+  #     test: ["CMD", "pg_isready", "-U", "kong"]
+  #     interval: 5s
+  #     timeout: 5s
+  #     retries: 5
 
-  kong-migration:
-    image: 'bitnami/kong'
-    command: "kong migrations bootstrap"
-    networks:
-      - kong-net
-    restart: on-failure
-    environment:
-      KONG_DATABASE: postgres
-      KONG_PG_HOST: kong-database
-      KONG_PG_USER: kong
-      KONG_PG_PASSWORD: kong
-    links:
-      - kong-database
-    depends_on:
-      - kong-database
+  # kong-migration:
+  #   image: 'bitnami/kong'
+  #   command: "kong migrations bootstrap"
+  #   networks:
+  #     - kong-net
+  #   restart: on-failure
+  #   environment:
+  #     KONG_DATABASE: postgres
+  #     KONG_PG_HOST: kong-database
+  #     KONG_PG_USER: kong
+  #     KONG_PG_PASSWORD: kong
+  #   links:
+  #     - kong-database
+  #   depends_on:
+  #     - kong-database
 
-  kong:
-    image: 'bitnami/kong'
-    restart: always
-    networks:
-      - kong-net
-    environment:
-      KONG_DATABASE: postgres
-      KONG_PG_HOST: kong-database
-      KONG_PG_USER: kong
-      KONG_PG_PASSWORD: kong
-      KONG_PROXY_LISTEN: 0.0.0.0:8000
-      KONG_PROXY_LISTEN_SSL: 0.0.0.0:8443
-      KONG_ADMIN_LISTEN: 0.0.0.0:8001
-    depends_on:
-      - kong-migration
-      - kong-database
-    healthcheck:
-      test: ["CMD", "curl", "-f", "http://kong:8001"]
-      interval: 5s
-      timeout: 2s
-      retries: 15
-    ports:
-      - "8001:8001"
-      - "8000:8000"
+  # kong:
+  #   image: 'bitnami/kong'
+  #   restart: always
+  #   networks:
+  #     - kong-net
+  #   environment:
+  #     KONG_DATABASE: postgres
+  #     KONG_PG_HOST: kong-database
+  #     KONG_PG_USER: kong
+  #     KONG_PG_PASSWORD: kong
+  #     KONG_PROXY_LISTEN: 0.0.0.0:8000
+  #     KONG_PROXY_LISTEN_SSL: 0.0.0.0:8443
+  #     KONG_ADMIN_LISTEN: 0.0.0.0:8001
+  #   depends_on:
+  #     - kong-migration
+  #     - kong-database
+  #   healthcheck:
+  #     test: ["CMD", "curl", "-f", "http://kong:8001"]
+  #     interval: 5s
+  #     timeout: 2s
+  #     retries: 15
+  #   ports:
+  #     - "8001:8001"
+  #     - "8000:8000"
 
 networks:
   app-net:

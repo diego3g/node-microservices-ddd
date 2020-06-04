@@ -1,12 +1,46 @@
 import express from 'express';
-import client from 'prisma/client';
+
+import { CompressionTypes } from 'kafkajs';
+import prisma from './prisma/client';
+import kafka from './kafka/client';
 
 const router = express.Router();
 
 router.get('/users', async (request, response) => {
-  const users = await client.user.findMany();
+  const users = await prisma.user.findMany();
 
   return response.json(users);
+});
+
+router.post('/users', async (request, response) => {
+  const { name, email, password } = request.body;
+
+  const user = await prisma.user.create({
+    data: {
+      name,
+      email,
+      password,
+    },
+  });
+
+  const producer = kafka.producer();
+
+  await producer.connect();
+
+  const kafkaMessage = {
+    user_id: user.id,
+    email: user.email,
+    team_id: 'xesque-no-bresquedele',
+    team: 'starter',
+  };
+
+  await producer.send({
+    topic: 'umbriel.add-user-to-team',
+    compression: CompressionTypes.GZIP,
+    messages: [{ value: JSON.stringify(kafkaMessage) }],
+  });
+
+  return response.json(user);
 });
 
 export default router;

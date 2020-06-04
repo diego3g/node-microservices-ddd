@@ -1,6 +1,6 @@
 datasource db {
   provider = "postgresql"
-  url      = env("DATABASE_URL")
+  url = "***"
 }
 
 generator client {
@@ -10,13 +10,12 @@ generator client {
 model User {
   @@map(name: "users")
 
-  id               String             @default(uuid()) @id
-  email            String             @unique
-  name             String
-  password         String
-  teams            Team[]             @relation(references: [id])
-  addresses        UserAddress[]
-  UserEmailHistory UserEmailHistory[]
+  id        String    @default(uuid()) @id
+  email     String    @unique
+  name      String
+  password  String
+  teams     Team[]    @relation(references: [id])
+  addresses UserAddress[]
 }
 
 model UserAddress {
@@ -37,16 +36,6 @@ model UserAddress {
   updatedAt      DateTime @default(now())
   User           User?    @relation(fields: [userId], references: [id])
   userId         String?
-}
-
-model UserEmailHistory {
-  @@map(name: "user_email_history")
-
-  id        String   @default(uuid()) @id
-  email     String
-  changedAt DateTime @default(now())
-  User      User?    @relation(fields: [userId], references: [id])
-  userId    String?
 }
 
 model Team {
