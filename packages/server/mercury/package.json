@@ -5,7 +5,7 @@
   "license": "MIT",
   "scripts": {
     "build": "tsc",
-    "dev": "ts-node-dev -r tsconfig-paths/register --respawn --transpileOnly --no-notify src/shared/infra/kafka/consumer.ts"
+    "dev": "ts-node-dev -r tsconfig-paths/register --respawn --transpileOnly --no-notify src/consumer.ts"
   },
   "dependencies": {
     "kafkajs": "^1.12.0"

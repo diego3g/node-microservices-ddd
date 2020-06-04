@@ -1,9 +1,0 @@
-{
-  "name": "protos",
-  "version": "1.0.0",
-  "main": "index.js",
-  "license": "MIT",
-  "dependencies": {
-    "grpc": "^1.24.2"
-  }
-}

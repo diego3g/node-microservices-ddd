@@ -6,7 +6,6 @@
     "baseUrl": "./src",
     "strictPropertyInitialization": false,
     "paths": {
-      "@protos/*": ["../../../../protos/generated/*"],
       "@modules/*": ["./modules/*"],
       "@shared/*": ["./shared/*"],
       "@config/*": ["./config/*"]

@@ -1,7 +1,5 @@
 import { Kafka } from 'kafkajs';
-import SendEmailService from '../../../modules/email/services/SendEmailService';
 
-const sendEmail = new SendEmailService();
 const kafka = new Kafka({
   clientId: '@server/mercury',
   brokers: ['localhost:9092'],
@@ -19,8 +17,6 @@ async function main(): Promise<void> {
 
   await consumer.run({
     eachMessage: async ({ topic, partition, message }) => {
-      sendEmail.execute();
-
       console.log({
         partition,
         offset: message.offset,
@@ -30,4 +26,8 @@ async function main(): Promise<void> {
   });
 }
 
-main().catch(console.error);
+main()
+  .then(() => {
+    console.log('Mercury running!');
+  })
+  .catch(console.error);

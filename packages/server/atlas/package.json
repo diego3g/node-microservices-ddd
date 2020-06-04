@@ -6,7 +6,7 @@
   "license": "MIT",
   "scripts": {
     "build": "tsc",
-    "dev": "ts-node-dev -r tsconfig-paths/register --respawn --transpileOnly --no-notify src/index.ts"
+    "dev": "ts-node-dev -r tsconfig-paths/register --respawn --transpileOnly --no-notify src/server.ts"
   },
   "dependencies": {
     "@prisma/client": "^2.0.0-beta.5",

@@ -1,6 +1,5 @@
 {
   "packages": [
-    "protos",
     "packages/server/*",
     "packages/client/*"
   ],

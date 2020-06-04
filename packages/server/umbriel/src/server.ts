@@ -7,4 +7,6 @@ const server = express();
 server.use(express.json());
 server.use(routes);
 
-server.listen(3334);
+server.listen(3334, () => {
+  console.log('Umbriel running!');
+});

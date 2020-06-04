@@ -5,7 +5,6 @@
     "outDir": "dist",
     "baseUrl": "./src",
     "paths": {
-      "@protos/*": ["../../../../protos/generated/*"],
       "@modules/*": ["./modules/*"],
       "@shared/*": ["./shared/*"],
       "@config/*": ["./config/*"]
