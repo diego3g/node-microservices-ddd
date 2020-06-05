@@ -1,0 +1,60 @@
+datasource db {
+  provider = "postgresql"
+  url      = env("DATABASE_URL")
+}
+
+generator client {
+  provider = "prisma-client-js"
+}
+
+model User {
+  @@map(name: "users")
+
+  id               String             @default(uuid()) @id
+  email            String             @unique
+  name             String
+  password         String
+  teams            Team[]             @relation(references: [id])
+  addresses        UserAddress[]
+  UserEmailHistory UserEmailHistory[]
+}
+
+model UserAddress {
+  @@map(name: "user_addresses")
+
+  id             String   @default(uuid()) @id
+  country        String
+  foreignCountry Boolean  @default(false)
+  postalCode     String
+  streetName     String
+  number         String
+  complement     String
+  neighborhood   String
+  city           String
+  state          String
+  type           String   @default("shipping")
+  createdAt      DateTime @default(now())
+  updatedAt      DateTime @default(now())
+  User           User     @relation(fields: [userId], references: [id])
+  userId         String
+}
+
+model UserEmailHistory {
+  @@map(name: "user_email_history")
+
+  id        String   @default(uuid()) @id
+  email     String
+  changedAt DateTime @default(now())
+  User      User     @relation(fields: [userId], references: [id])
+  userId    String
+}
+
+model Team {
+  @@map(name: "teams")
+
+  id        String   @default(uuid()) @id
+  title     String
+  createdAt DateTime @default(now())
+  updatedAt DateTime @default(now())
+  users     User[]   @relation(references: [id])
+}

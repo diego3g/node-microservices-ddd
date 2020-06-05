@@ -1,0 +1,17 @@
+{
+  "name": "mercury",
+  "version": "1.0.0",
+  "main": "index.js",
+  "license": "MIT",
+  "scripts": {
+    "build": "tsc",
+    "dev": "ts-node-dev -r tsconfig-paths/register --respawn --transpileOnly --no-notify src/consumer.ts"
+  },
+  "dependencies": {
+    "kafkajs": "^1.12.0"
+  },
+  "devDependencies": {
+    "ts-node-dev": "^1.0.0-pre.44",
+    "tsconfig-paths": "^3.9.0"
+  }
+}

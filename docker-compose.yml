@@ -1,0 +1,135 @@
+version: '3'
+
+services:
+  # Application
+
+  app_database:
+    image: 'bitnami/postgresql'
+    restart: always
+    ports:
+      - '5432:5432'
+    environment:
+      - POSTGRESQL_PASSWORD=docker
+      - POSTGRESQL_DATABASE=skylab
+    volumes:
+      - 'postgresql_data:/bitnami/postgresql'
+    healthcheck:
+      test: ["CMD", "pg_isready", "-U", "kong"]
+      interval: 5s
+      timeout: 5s
+      retries: 5
+
+  # app_service_atlas:
+  #   build:
+  #     context: ./packages/server/atlas
+  #   ports:
+  #     - '3333:3333'
+  #   command: "yarn dev"
+  #   restart: unless-stopped
+  #   volumes:
+  #     - .:/home/node/api
+  #     - ./node_modules:/home/node/api/node_modules
+  #   links:
+  #     - app_database
+  #   depends_on:
+  #     - app_database
+
+  # Kafka & Zookeeper
+
+  zookeeper:
+    image: 'bitnami/zookeeper:3'
+    ports:
+      - '2181:2181'
+    volumes:
+      - 'zookeeper_data:/bitnami'
+    environment:
+      - ALLOW_ANONYMOUS_LOGIN=yes
+    networks:
+      - app-net
+
+  kafka:
+    image: 'bitnami/kafka:2'
+    ports:
+      - '9092:9092'
+    volumes:
+      - 'kafka_data:/bitnami'
+    environment:
+      - KAFKA_CFG_ZOOKEEPER_CONNECT=zookeeper:2181
+      - KAFKA_ADVERTISED_LISTENERS=PLAINTEXT://localhost:9092
+      - ALLOW_PLAINTEXT_LISTENER=yes
+    depends_on:
+      - zookeeper
+    networks:
+      - app-net
+
+  # Kong (API Gateway)
+
+  # kong-database:
+  #   image: 'bitnami/postgresql'
+  #   restart: always
+  #   networks:
+  #     - kong-net
+  #   environment:
+  #     - POSTGRESQL_USERNAME=kong
+  #     - POSTGRESQL_PASSWORD=kong
+  #     - POSTGRESQL_DATABASE=kong
+  #   healthcheck:
+  #     test: ["CMD", "pg_isready", "-U", "kong"]
+  #     interval: 5s
+  #     timeout: 5s
+  #     retries: 5
+
+  # kong-migration:
+  #   image: 'bitnami/kong'
+  #   command: "kong migrations bootstrap"
+  #   networks:
+  #     - kong-net
+  #   restart: on-failure
+  #   environment:
+  #     KONG_DATABASE: postgres
+  #     KONG_PG_HOST: kong-database
+  #     KONG_PG_USER: kong
+  #     KONG_PG_PASSWORD: kong
+  #   links:
+  #     - kong-database
+  #   depends_on:
+  #     - kong-database
+
+  # kong:
+  #   image: 'bitnami/kong'
+  #   restart: always
+  #   networks:
+  #     - kong-net
+  #   environment:
+  #     KONG_DATABASE: postgres
+  #     KONG_PG_HOST: kong-database
+  #     KONG_PG_USER: kong
+  #     KONG_PG_PASSWORD: kong
+  #     KONG_PROXY_LISTEN: 0.0.0.0:8000
+  #     KONG_PROXY_LISTEN_SSL: 0.0.0.0:8443
+  #     KONG_ADMIN_LISTEN: 0.0.0.0:8001
+  #   depends_on:
+  #     - kong-migration
+  #     - kong-database
+  #   healthcheck:
+  #     test: ["CMD", "curl", "-f", "http://kong:8001"]
+  #     interval: 5s
+  #     timeout: 2s
+  #     retries: 15
+  #   ports:
+  #     - "8001:8001"
+  #     - "8000:8000"
+
+networks:
+  app-net:
+    driver: bridge     
+  kong-net:
+    driver: bridge
+
+volumes:
+  zookeeper_data:
+    driver: local
+  kafka_data:
+    driver: local
+  postgresql_data:
+    driver: local

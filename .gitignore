@@ -1,0 +1,9 @@
+# Yarn/NPM
+node_modules
+
+# Build
+dist
+
+# Proto
+protos/generated/*
+!protos/generated/.gitkeep

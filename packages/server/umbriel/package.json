@@ -1,0 +1,21 @@
+{
+  "name": "@server/umbriel",
+  "description": "Batch email platform",
+  "version": "1.0.0",
+  "main": "index.js",
+  "license": "MIT",
+  "scripts": {
+    "build": "tsc",
+    "dev": "ts-node-dev -r tsconfig-paths/register --respawn --transpileOnly --no-notify src/server.ts"
+  },
+  "dependencies": {
+    "express": "^4.17.1",
+    "express-async-errors": "^3.1.1",
+    "grpc": "^1.24.2",
+    "kafkajs": "^1.12.0"
+  },
+  "devDependencies": {
+    "ts-node-dev": "^1.0.0-pre.44",
+    "tsconfig-paths": "^3.9.0"
+  }
+}

@@ -1,0 +1,29 @@
+{
+  "version": "0.3.14-fixed",
+  "steps": [
+    {
+      "tag": "UpdateField",
+      "model": "UserAddress",
+      "field": "User",
+      "arity": "Required"
+    },
+    {
+      "tag": "UpdateField",
+      "model": "UserAddress",
+      "field": "userId",
+      "arity": "Required"
+    },
+    {
+      "tag": "UpdateField",
+      "model": "UserEmailHistory",
+      "field": "User",
+      "arity": "Required"
+    },
+    {
+      "tag": "UpdateField",
+      "model": "UserEmailHistory",
+      "field": "userId",
+      "arity": "Required"
+    }
+  ]
+}

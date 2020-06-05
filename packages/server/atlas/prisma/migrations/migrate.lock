@@ -1,0 +1,6 @@
+# Prisma Migrate lockfile v1
+
+20200515170312-create-users
+20200603231715-create_teams_and_addresses
+20200603234442-create_user_email_history
+20200604122553-add_cascade_on_deletes

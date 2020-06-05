@@ -1,0 +1,16 @@
+{
+  "extends": "../../../tsconfig.json",
+  "compilerOptions": {
+    "rootDir": "src",
+    "outDir": "dist",
+    "baseUrl": "./src",
+    "strictPropertyInitialization": false,
+    "paths": {
+      "@modules/*": ["./modules/*"],
+      "@core/*": ["./core/*"],
+      "@shared/*": ["./shared/*"],
+      "@infra/*": ["./infra/*"],
+      "@config/*": ["./config/*"]
+    },
+  }
+}
