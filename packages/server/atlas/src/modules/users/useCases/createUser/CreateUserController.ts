@@ -19,7 +19,7 @@ export default class CreateUserController extends BaseController {
     try {
       const result = await this.useCase.execute(dto);
 
-      if (result.isLeft()) {
+      if (result.isFailure()) {
         const error = result.value;
 
         switch (error.constructor) {

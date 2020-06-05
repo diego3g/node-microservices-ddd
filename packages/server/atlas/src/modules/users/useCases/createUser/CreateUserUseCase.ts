@@ -1,7 +1,7 @@
 import { IUseCase } from '@core/domain/UseCase';
 import User from '@modules/users/domain/User';
 import IUserRepo from '@modules/users/repositories/IUserRepo';
-import Result, { left, Either, right } from '@core/logic/Result';
+import Result, { failure, Either, success } from '@core/logic/Result';
 import * as GenericAppError from '@core/logic/AppError';
 import ICreateUserDTO from './ICreateUserDTO';
 import * as CreateUserErrors from './CreateUserErrors';
@@ -31,23 +31,23 @@ export default class CreateUserUseCase
     });
 
     if (userOrError.isFailure) {
-      return left(Result.fail<void>(userOrError.error));
+      return failure(Result.fail(userOrError.error));
     }
 
-    const user: User = userOrError.getValue();
+    const user = userOrError.getValue();
 
     const userAlreadyExists = await this.userRepo.exists(user.email);
 
     if (userAlreadyExists) {
-      return left(new CreateUserErrors.AccountAlreadyExists(user.email));
+      return failure(new CreateUserErrors.AccountAlreadyExists(user.email));
     }
 
     try {
       await this.userRepo.save(user);
     } catch (err) {
-      return left(new GenericAppError.UnexpectedError(err));
+      return failure(new GenericAppError.UnexpectedError(err));
     }
 
-    return right(Result.ok());
+    return success(Result.ok());
   }
 }
