@@ -24,6 +24,8 @@
     "prettier"
   ],
   "rules": {
+    "no-new": "off",
+    "no-prototype-builtins": "off",
     "no-restricted-syntax": "off",
     "max-classes-per-file": "off",
     "import/prefer-default-export": "off",

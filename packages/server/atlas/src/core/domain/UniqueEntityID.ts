@@ -7,6 +7,18 @@ export default class UniqueEntityID {
     this.value = id || uuid();
   }
 
+  equals(id?: UniqueEntityID): boolean {
+    if (id === null || id === undefined) {
+      return false;
+    }
+
+    if (!(id instanceof UniqueEntityID)) {
+      return false;
+    }
+
+    return id.toValue() === this.value;
+  }
+
   toString() {
     return String(this.value);
   }

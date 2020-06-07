@@ -9,4 +9,20 @@ export default abstract class Entity<T> {
     this._id = id || new UniqueEntityID();
     this.props = props;
   }
+
+  public equals(object?: Entity<T>): boolean {
+    if (object === null || object === undefined) {
+      return false;
+    }
+
+    if (this === object) {
+      return true;
+    }
+
+    if (!(object instanceof Entity)) {
+      return false;
+    }
+
+    return this._id.equals(object._id);
+  }
 }

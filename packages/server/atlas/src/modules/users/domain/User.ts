@@ -2,6 +2,7 @@ import AggregateRoot from '@core/domain/AggregateRoot';
 import UniqueEntityID from '@core/domain/UniqueEntityID';
 import Guard from '@core/logic/Guard';
 import Result from '@core/logic/Result';
+import UserCreatedEvent from './events/UserCreatedEvent';
 
 interface IUserProps {
   name: string;
@@ -10,10 +11,6 @@ interface IUserProps {
 }
 
 export default class User extends AggregateRoot<IUserProps> {
-  get id() {
-    return this._id;
-  }
-
   get name() {
     return this.props.name;
   }
@@ -45,11 +42,11 @@ export default class User extends AggregateRoot<IUserProps> {
 
     const user = new User(props, id);
 
-    // const idWasProvided = !!id;
+    const idWasProvided = !!id;
 
-    // if (!idWasProvided) {
-    //   user.addDomainEvent(new UserCreatedEvent(user));
-    // }
+    if (!idWasProvided) {
+      user.addDomainEvent(new UserCreatedEvent(user));
+    }
 
     return Result.ok<User>(user);
   }
