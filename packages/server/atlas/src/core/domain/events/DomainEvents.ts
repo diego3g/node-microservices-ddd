@@ -1,6 +1,6 @@
-import IDomainEvent from './IDomainEvent';
 import AggregateRoot from '../AggregateRoot';
 import UniqueEntityID from '../UniqueEntityID';
+import IDomainEvent from './IDomainEvent';
 
 export default class DomainEvents {
   private static handlersMap = {};

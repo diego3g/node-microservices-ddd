@@ -1,4 +1,5 @@
 import DomainEvents from '@core/domain/events/DomainEvents';
+
 import { IHandle } from '../../../core/domain/events/IHandle';
 import UserCreatedEvent from '../domain/events/UserCreatedEvent';
 

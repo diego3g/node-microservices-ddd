@@ -2,12 +2,15 @@ import AggregateRoot from '@core/domain/AggregateRoot';
 import UniqueEntityID from '@core/domain/UniqueEntityID';
 import Guard from '@core/logic/Guard';
 import Result from '@core/logic/Result';
+
 import UserCreatedEvent from './events/UserCreatedEvent';
+import UserEmail from './UserEmail';
+import UserPassword from './UserPassword';
 
 interface IUserProps {
   name: string;
-  email: string;
-  password: string;
+  email: UserEmail;
+  password: UserPassword;
 }
 
 export default class User extends AggregateRoot<IUserProps> {

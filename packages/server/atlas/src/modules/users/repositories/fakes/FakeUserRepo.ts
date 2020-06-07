@@ -1,4 +1,5 @@
 import User from '@modules/users/domain/User';
+
 import IUserRepo from '../IUserRepo';
 
 export default class FakeUserRepo implements IUserRepo {

@@ -1,7 +1,8 @@
 // import FakeUserRepo from '@modules/users/repositories/fakes/FakeUserRepo';
 import PrismaUserRepo from '@modules/users/infra/prisma/PrismaUserRepo';
-import CreateUserUseCase from './CreateUserUseCase';
+
 import CreateUserController from './CreateUserController';
+import CreateUserUseCase from './CreateUserUseCase';
 
 // const fakeUserRepo = new FakeUserRepo();
 const prismaUserRepo = new PrismaUserRepo();

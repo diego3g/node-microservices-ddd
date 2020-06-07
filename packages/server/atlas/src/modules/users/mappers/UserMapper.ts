@@ -1,13 +1,23 @@
 import UniqueEntityID from '@core/domain/UniqueEntityID';
+import { User as PersistenceUser } from '@prisma/client';
+
 import User from '../domain/User';
+import UserEmail from '../domain/UserEmail';
+import UserPassword from '../domain/UserPassword';
 
 export class UserMap {
-  public static toDomain(raw: any): User {
+  public static toDomain(raw: PersistenceUser): User {
+    const userEmailOrError = UserEmail.create(raw.email);
+    const userPasswordOrError = UserPassword.create({
+      value: raw.password,
+      hashed: true,
+    });
+
     const userOrError = User.create(
       {
         name: raw.name,
-        email: raw.email,
-        password: raw.password,
+        email: userEmailOrError.getValue(),
+        password: userPasswordOrError.getValue(),
       },
       new UniqueEntityID(raw.id)
     );
@@ -23,12 +33,12 @@ export class UserMap {
     return null;
   }
 
-  public static toPersistence(user: User): any {
+  public static async toPersistence(user: User): Promise<PersistenceUser> {
     return {
       id: user.id.toString(),
       name: user.name,
-      email: user.email,
-      password: user.password,
+      email: user.email.value,
+      password: await user.password.getHashedValue(),
     };
   }
 }

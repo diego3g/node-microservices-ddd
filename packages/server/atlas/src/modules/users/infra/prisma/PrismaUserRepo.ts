@@ -1,8 +1,8 @@
-import IUserRepo from '@modules/users/repositories/IUserRepo';
+import DomainEvents from '@core/domain/events/DomainEvents';
 import prisma from '@infra/prisma/client';
 import User from '@modules/users/domain/User';
-import DomainEvents from '@core/domain/events/DomainEvents';
 import { UserMap } from '@modules/users/mappers/UserMapper';
+import IUserRepo from '@modules/users/repositories/IUserRepo';
 
 export default class PrismaUserRepo implements IUserRepo {
   async exists(email: string): Promise<boolean> {

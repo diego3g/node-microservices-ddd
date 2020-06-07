@@ -1,7 +1,8 @@
 import express from 'express';
+
 import 'express-async-errors';
-import routes from './routes';
 import kafka from './kafka';
+import routes from './routes';
 
 async function main(): Promise<void> {
   const server = express();

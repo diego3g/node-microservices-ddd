@@ -1,4 +1,5 @@
 import express from 'express';
+
 import { createUserController } from '@modules/users/useCases/createUser';
 
 const userRouter = express.Router();

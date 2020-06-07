@@ -16,7 +16,7 @@ async function main(): Promise<void> {
   });
 
   await consumer.run({
-    eachMessage: async ({ topic, partition, message }) => {
+    eachMessage: async ({ partition, message }) => {
       console.log({
         partition,
         offset: message.offset,

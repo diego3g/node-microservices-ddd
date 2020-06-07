@@ -21,13 +21,16 @@
   },
   "plugins": [
     "@typescript-eslint",
-    "prettier"
+    "prettier",
+    "eslint-plugin-import-helpers"
   ],
   "rules": {
     "no-new": "off",
     "no-prototype-builtins": "off",
     "no-restricted-syntax": "off",
     "max-classes-per-file": "off",
+    "@typescript-eslint/no-explicit-any": "off",
+    "no-console": "off",
     "import/prefer-default-export": "off",
     "@typescript-eslint/explicit-function-return-type": ["off"],
     "@typescript-eslint/no-unused-vars": [
@@ -52,6 +55,18 @@
       "ignorePackages",
       {
         "ts": "never"
+      }
+    ],
+    "import-helpers/order-imports": [
+      "warn",
+      {
+        "newlinesBetween": "always", // new line between groups
+        "groups": [
+          "module",
+          "/^@/",
+          ["parent", "sibling", "index"]
+        ],
+        "alphabetize": { "order": "asc", "ignoreCase": true }
       }
     ]
   },

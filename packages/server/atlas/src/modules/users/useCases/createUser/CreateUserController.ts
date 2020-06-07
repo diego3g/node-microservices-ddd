@@ -1,6 +1,6 @@
 import BaseController from '@core/infra/BaseController';
-import * as CreateUserErrors from './CreateUserErrors';
 
+import * as CreateUserErrors from './CreateUserErrors';
 import CreateUserUseCase from './CreateUserUseCase';
 import ICreateUserDTO from './ICreateUserDTO';
 

@@ -1,10 +1,13 @@
 import { IUseCase } from '@core/domain/UseCase';
-import User from '@modules/users/domain/User';
-import IUserRepo from '@modules/users/repositories/IUserRepo';
-import Result, { failure, Either, success } from '@core/logic/Result';
 import * as GenericAppError from '@core/logic/AppError';
-import ICreateUserDTO from './ICreateUserDTO';
+import Result, { failure, Either, success } from '@core/logic/Result';
+import User from '@modules/users/domain/User';
+import UserEmail from '@modules/users/domain/UserEmail';
+import UserPassword from '@modules/users/domain/UserPassword';
+import IUserRepo from '@modules/users/repositories/IUserRepo';
+
 import * as CreateUserErrors from './CreateUserErrors';
+import ICreateUserDTO from './ICreateUserDTO';
 
 type Response = Either<
   | GenericAppError.UnexpectedError
@@ -21,13 +24,22 @@ export default class CreateUserUseCase
     this.userRepo = userRepo;
   }
 
-  async execute(req: ICreateUserDTO): Promise<Response> {
-    const { name, email, password } = req;
+  async execute(request: ICreateUserDTO): Promise<Response> {
+    const userEmailOrError = UserEmail.create(request.email);
+    const userPasswordOrError = UserPassword.create({
+      value: request.password,
+    });
+
+    const result = Result.combine([userEmailOrError, userPasswordOrError]);
+
+    if (result.isFailure) {
+      return failure(Result.fail(result.error));
+    }
 
     const userOrError = User.create({
-      name,
-      email,
-      password,
+      name: request.name,
+      email: userEmailOrError.getValue(),
+      password: userPasswordOrError.getValue(),
     });
 
     if (userOrError.isFailure) {
