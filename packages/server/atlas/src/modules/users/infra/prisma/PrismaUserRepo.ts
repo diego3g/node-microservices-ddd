@@ -1,23 +1,28 @@
 import DomainEvents from '@core/domain/events/DomainEvents';
 import prisma from '@infra/prisma/client';
 import User from '@modules/users/domain/User';
-import { UserMap } from '@modules/users/mappers/UserMapper';
+import UserEmail from '@modules/users/domain/UserEmail';
+import UserMap from '@modules/users/mappers/UserMap';
 import IUserRepo from '@modules/users/repositories/IUserRepo';
 
 export default class PrismaUserRepo implements IUserRepo {
-  async exists(email: string): Promise<boolean> {
-    const exists = await prisma.user.findOne({
+  async findByEmail(email: string | UserEmail): Promise<User> {
+    const rawUser = await prisma.user.findOne({
       where: {
-        email,
+        email: email instanceof UserEmail ? email.value : email,
       },
     });
 
-    return !!exists;
+    if (!rawUser) {
+      return null;
+    }
+
+    return UserMap.toDomain(rawUser);
   }
 
   async save(user: User): Promise<void> {
-    const exists = await this.exists(user.email);
-    const data = UserMap.toPersistence(user);
+    const exists = !!(await this.findByEmail(user.email.value));
+    const data = await UserMap.toPersistence(user);
 
     if (!exists) {
       await prisma.user.create({
@@ -25,7 +30,7 @@ export default class PrismaUserRepo implements IUserRepo {
       });
     } else {
       await prisma.user.update({
-        where: { email: user.email },
+        where: { email: user.email.value },
         data,
       });
     }

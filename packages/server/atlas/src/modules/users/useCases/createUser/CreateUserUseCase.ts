@@ -10,9 +10,7 @@ import * as CreateUserErrors from './CreateUserErrors';
 import ICreateUserDTO from './ICreateUserDTO';
 
 type Response = Either<
-  | GenericAppError.UnexpectedError
-  | CreateUserErrors.AccountAlreadyExists
-  | Result<any>,
+  GenericAppError.UnexpectedError | CreateUserErrors.AccountAlreadyExists,
   Result<void>
 >;
 
@@ -48,10 +46,12 @@ export default class CreateUserUseCase
 
     const user = userOrError.getValue();
 
-    const userAlreadyExists = await this.userRepo.exists(user.email);
+    const userAlreadyExists = await this.userRepo.findByEmail(user.email);
 
     if (userAlreadyExists) {
-      return failure(new CreateUserErrors.AccountAlreadyExists(user.email));
+      return failure(
+        new CreateUserErrors.AccountAlreadyExists(user.email.value)
+      );
     }
 
     try {

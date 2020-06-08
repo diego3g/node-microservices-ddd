@@ -20,9 +20,11 @@ export abstract class ValueObject<T extends IValueObjectProps> {
     if (vo === null || vo === undefined) {
       return false;
     }
+
     if (vo.props === undefined) {
       return false;
     }
+
     return shallowEqual(this.props, vo.props);
   }
 }

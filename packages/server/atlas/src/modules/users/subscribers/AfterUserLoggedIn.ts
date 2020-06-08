@@ -1,21 +1,21 @@
 import DomainEvents from '@core/domain/events/DomainEvents';
 
 import { IHandle } from '../../../core/domain/events/IHandle';
-import UserCreatedEvent from '../domain/events/UserCreatedEvent';
+import UserLoggedInEvent from '../domain/events/UserLoggedInEvent';
 
-export default class AfterUserCreated implements IHandle<UserCreatedEvent> {
+export default class AfterUserCreated implements IHandle<UserLoggedInEvent> {
   constructor() {
     this.setupSubscriptions();
   }
 
   setupSubscriptions(): void {
     DomainEvents.register(
-      this.onUserCreatedEvent.bind(this),
-      UserCreatedEvent.name
+      this.onUserLoggedInEvent.bind(this),
+      UserLoggedInEvent.name
     );
   }
 
-  private async onUserCreatedEvent(event: UserCreatedEvent): Promise<void> {
+  private async onUserLoggedInEvent(event: UserLoggedInEvent): Promise<void> {
     const { user } = event;
 
     console.log('created', user);

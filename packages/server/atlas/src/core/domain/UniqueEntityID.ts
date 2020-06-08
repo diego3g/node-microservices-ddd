@@ -1,9 +1,9 @@
 import { uuid } from 'uuidv4';
 
 export default class UniqueEntityID {
-  private value: string | number;
+  private value: string;
 
-  constructor(id?: string | number) {
+  constructor(id?: string) {
     this.value = id || uuid();
   }
 

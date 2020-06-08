@@ -29,7 +29,7 @@ export default class CreateUserController extends BaseController {
             return this.fail(error.errorValue().message);
         }
       } else {
-        return this.created(this.response);
+        return this.created();
       }
     } catch (err) {
       return this.fail(err);

@@ -5,7 +5,7 @@ import User from '../domain/User';
 import UserEmail from '../domain/UserEmail';
 import UserPassword from '../domain/UserPassword';
 
-export class UserMap {
+export default class UserMap {
   public static toDomain(raw: PersistenceUser): User {
     const userEmailOrError = UserEmail.create(raw.email);
     const userPasswordOrError = UserPassword.create({

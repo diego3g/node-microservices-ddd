@@ -22,16 +22,16 @@ export default abstract class BaseController {
     return response.status(code).json({ message });
   }
 
-  public ok<T>(response: express.Response, dto?: T): express.Response {
+  public ok<T>(dto?: T): express.Response {
     if (dto) {
-      return response.status(200).json(dto);
+      return this.response.status(200).json(dto);
     }
 
-    return response.sendStatus(200);
+    return this.response.sendStatus(200);
   }
 
-  public created(response: express.Response): express.Response {
-    return response.sendStatus(201);
+  public created(): express.Response {
+    return this.response.sendStatus(201);
   }
 
   public clientError(message?: string): express.Response {
