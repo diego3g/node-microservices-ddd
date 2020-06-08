@@ -1,3 +1,4 @@
-import '@infra/http/server';
+import 'dotenv/config';
 
-import './modules/users';
+import '@infra/http/server';
+import '@modules/users';

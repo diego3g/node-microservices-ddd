@@ -4,6 +4,5 @@ node_modules
 # Build
 dist
 
-# Proto
-protos/generated/*
-!protos/generated/.gitkeep
+# Environment
+.env
