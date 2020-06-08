@@ -2,10 +2,15 @@ import DomainEvents from '@core/domain/events/DomainEvents';
 
 import { IHandle } from '../../../core/domain/events/IHandle';
 import UserCreatedEvent from '../domain/events/UserCreatedEvent';
+import SubscribeUserToMailingUseCase from '../useCases/subscribeUserToMailing/SubscribeUserToMailingUseCase';
 
 export default class AfterUserCreated implements IHandle<UserCreatedEvent> {
-  constructor() {
+  private subscribeUserToMailing: SubscribeUserToMailingUseCase;
+
+  constructor(subscribeUserToMailing: SubscribeUserToMailingUseCase) {
     this.setupSubscriptions();
+
+    this.subscribeUserToMailing = subscribeUserToMailing;
   }
 
   setupSubscriptions(): void {
@@ -18,6 +23,8 @@ export default class AfterUserCreated implements IHandle<UserCreatedEvent> {
   private async onUserCreatedEvent(event: UserCreatedEvent): Promise<void> {
     const { user } = event;
 
-    console.log('created', user);
+    this.subscribeUserToMailing.execute({
+      userId: user.id.toValue(),
+    });
   }
 }

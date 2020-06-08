@@ -20,6 +20,18 @@ export default class PrismaUserRepo implements IUserRepo {
     return UserMap.toDomain(rawUser);
   }
 
+  async findById(id: string): Promise<User> {
+    const rawUser = await prisma.user.findOne({
+      where: { id },
+    });
+
+    if (!rawUser) {
+      return null;
+    }
+
+    return UserMap.toDomain(rawUser);
+  }
+
   async save(user: User): Promise<void> {
     const data = await UserMap.toPersistence(user);
 

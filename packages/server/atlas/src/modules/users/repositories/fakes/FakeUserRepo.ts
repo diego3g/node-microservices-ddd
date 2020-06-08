@@ -14,6 +14,12 @@ export default class FakeUserRepo implements IUserRepo {
     });
   }
 
+  public async findById(id: string): Promise<User> {
+    return this.users.find((user) => {
+      return user.id.toValue() === id;
+    });
+  }
+
   public async save(user: User): Promise<void> {
     this.users.push(user);
   }

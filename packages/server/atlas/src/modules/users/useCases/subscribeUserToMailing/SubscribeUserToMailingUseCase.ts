@@ -1,0 +1,42 @@
+import { IUseCase } from '@core/domain/UseCase';
+import * as GenericAppError from '@core/logic/AppError';
+import Result, { failure, Either, success } from '@core/logic/Result';
+import IUserRepo from '@modules/users/repositories/IUserRepo';
+import IUmbrielService from '@modules/users/services/umbriel/IUmbrielService';
+
+import { ISubscribeUserToMailingDTO } from './ISubscribeUserToMailingDTO';
+import * as SubcribeUserToMailingErrors from './SubscribeUserToMailingErrors';
+
+type Response = Either<GenericAppError.UnexpectedError, Result<void>>;
+
+export default class LoginUseCase
+  implements IUseCase<ISubscribeUserToMailingDTO, Promise<Response>> {
+  private userRepo: IUserRepo;
+
+  private umbrielService: IUmbrielService;
+
+  constructor(userRepo: IUserRepo, umbrielService: IUmbrielService) {
+    this.userRepo = userRepo;
+    this.umbrielService = umbrielService;
+  }
+
+  async execute(request: ISubscribeUserToMailingDTO): Promise<Response> {
+    try {
+      const { userId } = request;
+
+      const user = await this.userRepo.findById(userId);
+
+      const userFound = !!user;
+
+      if (!userFound) {
+        return failure(new SubcribeUserToMailingErrors.UserNotFoundError());
+      }
+
+      await this.umbrielService.addUserToTeam();
+
+      return success(Result.ok());
+    } catch (err) {
+      return failure(new GenericAppError.UnexpectedError(err));
+    }
+  }
+}
