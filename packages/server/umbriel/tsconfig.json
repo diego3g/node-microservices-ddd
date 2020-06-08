@@ -1,13 +1,18 @@
 {
   "extends": "../../../tsconfig.json",
   "compilerOptions": {
-    "rootDir": "src",
     "outDir": "dist",
-    "baseUrl": "./src",
+    "baseUrl": ".",
+    "strictPropertyInitialization": false,
     "paths": {
-      "@modules/*": ["./modules/*"],
-      "@shared/*": ["./shared/*"],
-      "@config/*": ["./config/*"]
+      "@modules/*": ["./src/modules/*"],
+      "@core/*": ["./src/core/*"],
+      "@shared/*": ["./src/shared/*"],
+      "@infra/*": ["./src/infra/*"],
+      "@config/*": ["./src/config/*"]
     },
-  }
+  },
+  "include": [
+    "src"
+  ]
 }

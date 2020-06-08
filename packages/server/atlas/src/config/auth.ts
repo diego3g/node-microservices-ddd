@@ -1,4 +1,4 @@
 export default {
   secret: process.env.APP_SECRET,
-  tokenExpiryTimeInSeconds: 5 * 60,
+  tokenExpiryTimeInSeconds: 8 * 60 * 60,
 };
