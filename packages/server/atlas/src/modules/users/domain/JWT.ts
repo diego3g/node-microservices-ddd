@@ -1,5 +1,6 @@
 import jwt from 'jsonwebtoken';
 
+import authConfig from '@config/auth';
 import Guard from '@core/logic/Guard';
 import Result from '@core/logic/Result';
 
@@ -22,9 +23,9 @@ export default class JWT {
   }
 
   private static signJwt(props: IJWTProps, payload: IJWTPayload) {
-    return jwt.sign(payload, 'secret', {
+    return jwt.sign(payload, authConfig.secret, {
       subject: props.sub,
-      expiresIn: '7d',
+      expiresIn: authConfig.tokenExpiryTimeInSeconds,
     });
   }
 

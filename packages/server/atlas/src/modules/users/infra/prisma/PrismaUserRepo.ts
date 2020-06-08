@@ -21,19 +21,13 @@ export default class PrismaUserRepo implements IUserRepo {
   }
 
   async save(user: User): Promise<void> {
-    const exists = !!(await this.findByEmail(user.email.value));
     const data = await UserMap.toPersistence(user);
 
-    if (!exists) {
-      await prisma.user.create({
-        data,
-      });
-    } else {
-      await prisma.user.update({
-        where: { email: user.email.value },
-        data,
-      });
-    }
+    await prisma.user.upsert({
+      where: { email: user.email.value },
+      update: data,
+      create: data,
+    });
 
     DomainEvents.dispatchEventsForAggregate(user.id);
   }
