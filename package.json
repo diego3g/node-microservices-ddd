@@ -14,9 +14,8 @@
     "test": "jest"
   },
   "lint-staged": {
-    "*.ts": [
-      "eslint --fix",
-      "git add"
+    "*.ts, *.tsx": [
+      "eslint --fix"
     ]
   },
   "husky": {
