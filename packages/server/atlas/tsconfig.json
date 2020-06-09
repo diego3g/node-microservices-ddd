@@ -6,8 +6,6 @@
     "strictPropertyInitialization": false,
     "paths": {
       "@modules/*": ["./src/modules/*"],
-      "@core/*": ["./src/core/*"],
-      "@shared/*": ["./src/shared/*"],
       "@infra/*": ["./src/infra/*"],
       "@config/*": ["./src/config/*"]
     }

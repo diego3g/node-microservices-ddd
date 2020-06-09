@@ -1,5 +1,5 @@
-import Result from '@core/logic/Result';
-import UseCaseError from '@core/logic/UseCaseError';
+import Result from '@server/shared/src/core/logic/Result';
+import UseCaseError from '@server/shared/src/core/logic/UseCaseError';
 
 export class UserNameDoesntExistError extends Result<UseCaseError> {
   constructor() {

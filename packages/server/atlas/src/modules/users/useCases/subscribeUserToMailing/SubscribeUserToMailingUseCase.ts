@@ -1,9 +1,13 @@
-import { IUseCase } from '@core/domain/UseCase';
-import * as GenericAppError from '@core/logic/AppError';
-import Result, { failure, Either, success } from '@core/logic/Result';
 import Team from '@modules/users/domain/Team';
 import IUserRepo from '@modules/users/repositories/IUserRepo';
 import IUmbrielService from '@modules/users/services/umbriel/IUmbrielService';
+import { IUseCase } from '@server/shared/src/core/domain/UseCase';
+import * as GenericAppError from '@server/shared/src/core/logic/AppError';
+import Result, {
+  failure,
+  Either,
+  success,
+} from '@server/shared/src/core/logic/Result';
 
 import { ISubscribeUserToMailingDTO } from './ISubscribeUserToMailingDTO';
 import * as SubcribeUserToMailingErrors from './SubscribeUserToMailingErrors';

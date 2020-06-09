@@ -1,5 +1,5 @@
-import { ValueObject } from '@core/domain/ValueObject';
-import Result from '@core/logic/Result';
+import { ValueObject } from '@server/shared/src/core/domain/ValueObject';
+import Result from '@server/shared/src/core/logic/Result';
 
 export interface IUserEmailProps {
   value: string;

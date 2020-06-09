@@ -1,5 +1,5 @@
-import UniqueEntityID from '@core/domain/UniqueEntityID';
 import { User as PersistenceUser } from '@prisma/client';
+import UniqueEntityID from '@server/shared/src/core/domain/UniqueEntityID';
 
 import User from '../domain/User';
 import UserEmail from '../domain/UserEmail';

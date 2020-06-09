@@ -1,8 +1,8 @@
 import bcrypt from 'bcryptjs';
 
-import { ValueObject } from '@core/domain/ValueObject';
-import Guard from '@core/logic/Guard';
-import Result from '@core/logic/Result';
+import { ValueObject } from '@server/shared/src/core/domain/ValueObject';
+import Guard from '@server/shared/src/core/logic/Guard';
+import Result from '@server/shared/src/core/logic/Result';
 
 interface IUserPasswordProps {
   value: string;

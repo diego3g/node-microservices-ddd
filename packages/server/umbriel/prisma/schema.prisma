@@ -1,0 +1,84 @@
+// This is your Prisma schema file,
+// learn more about it in the docs: https://pris.ly/d/prisma-schema
+
+datasource db {
+  provider = "postgresql"
+  url      = env("DATABASE_URL")
+}
+
+generator client {
+  provider = "prisma-client-js"
+}
+
+model Contact {
+  @@map(name: "contacts")
+
+  id    String        @default(uuid()) @id
+  email String        @unique
+  tags  ContactTags[]
+
+  createdAt DateTime @default(now())
+  updatedAt DateTime @default(now())
+}
+
+model ContactTags {
+  @@map(name: "contact_tags")
+
+  id         String  @default(uuid()) @id
+  contact    Contact @relation(fields: [contactId], references: [id])
+  contactId  String
+  tag        Tag     @relation(fields: [tagId], references: [id])
+  tagId      String
+  subscribed Boolean @default(true)
+
+  createdAt DateTime @default(now())
+  updatedAt DateTime @default(now())
+}
+
+model Tag {
+  @@map(name: "tags")
+
+  id       String        @default(uuid()) @id
+  title    String
+  contacts ContactTags[]
+}
+
+model Message {
+  @@map(name: "messages")
+
+  id              String    @default(uuid()) @id
+  subject         String
+  body            String
+  recipientsCount Int
+  sentCount       Int       @default(0)
+  sentAt          DateTime?
+  template        Template  @relation(fields: [templateId], references: [id])
+  templateId      String
+  sender          Sender    @relation(fields: [senderId], references: [id])
+  senderId        String
+
+  createdAt DateTime @default(now())
+  updatedAt DateTime @default(now())
+}
+
+model Template {
+  @@map(name: "templates")
+
+  id       String    @default(uuid()) @id
+  messages Message[]
+
+  title   String
+  content String
+}
+
+model Sender {
+  @@map(name: "senders")
+
+  id       String    @default(uuid()) @id
+  messages Message[]
+  name     String
+  email    String
+
+  createdAt DateTime @default(now())
+  updatedAt DateTime @default(now())
+}

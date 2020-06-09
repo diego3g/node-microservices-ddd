@@ -1,7 +1,7 @@
-import AggregateRoot from '@core/domain/AggregateRoot';
-import UniqueEntityID from '@core/domain/UniqueEntityID';
-import Guard from '@core/logic/Guard';
-import Result from '@core/logic/Result';
+import AggregateRoot from '@server/shared/src/core/domain/AggregateRoot';
+import UniqueEntityID from '@server/shared/src/core/domain/UniqueEntityID';
+import Guard from '@server/shared/src/core/logic/Guard';
+import Result from '@server/shared/src/core/logic/Result';
 
 interface ITeamProps {
   title: string;

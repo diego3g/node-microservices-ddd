@@ -1,5 +1,5 @@
-import IDomainEvent from '@core/domain/events/IDomainEvent';
-import UniqueEntityID from '@core/domain/UniqueEntityID';
+import IDomainEvent from '@server/shared/src/core/domain/events/IDomainEvent';
+import UniqueEntityID from '@server/shared/src/core/domain/UniqueEntityID';
 
 import User from '../User';
 

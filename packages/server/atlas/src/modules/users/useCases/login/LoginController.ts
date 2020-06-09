@@ -1,4 +1,4 @@
-import BaseController from '@core/infra/BaseController';
+import BaseController from '@server/shared/src/core/infra/BaseController';
 
 import { ILoginDTO } from './ILoginDTO';
 import * as LoginErrors from './LoginErrors';

@@ -1,4 +1,4 @@
-import BaseController from '@core/infra/BaseController';
+import BaseController from '@server/shared/src/core/infra/BaseController';
 
 import * as CreateUserErrors from './CreateUserErrors';
 import CreateUserUseCase from './CreateUserUseCase';

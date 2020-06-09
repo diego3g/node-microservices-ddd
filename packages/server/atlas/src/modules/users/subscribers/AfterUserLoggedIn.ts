@@ -1,6 +1,6 @@
-import DomainEvents from '@core/domain/events/DomainEvents';
+import DomainEvents from '@server/shared/src/core/domain/events/DomainEvents';
+import { IHandle } from '@server/shared/src/core/domain/events/IHandle';
 
-import { IHandle } from '../../../core/domain/events/IHandle';
 import UserLoggedInEvent from '../domain/events/UserLoggedInEvent';
 
 export default class AfterUserCreated implements IHandle<UserLoggedInEvent> {
