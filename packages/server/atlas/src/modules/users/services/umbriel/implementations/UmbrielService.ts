@@ -5,7 +5,7 @@ import User from '@modules/users/domain/User';
 import IUmbrielService from '../IUmbrielService';
 
 export default class UmbrielService implements IUmbrielService {
-  async addUserToTeam(user: User, team: Team) {
+  async addUserToTeam(user: User, team: Team): Promise<void> {
     const userWithTeamMessage = {
       user: {
         id: user.id.toValue(),

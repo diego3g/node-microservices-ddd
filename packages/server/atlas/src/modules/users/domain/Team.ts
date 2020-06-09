@@ -8,7 +8,7 @@ interface ITeamProps {
 }
 
 export default class Team extends AggregateRoot<ITeamProps> {
-  get title() {
+  get title(): string {
     return this.props.title;
   }
 

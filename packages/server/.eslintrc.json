@@ -51,6 +51,9 @@
         } 
       } 
     ],
+    "@typescript-eslint/explicit-module-boundary-types": ["warn", {
+      "allowArgumentsExplicitlyTypedAsAny": true
+    }],
     "no-underscore-dangle": "off",
     "@typescript-eslint/camelcase": "off",
     "prettier/prettier": "error",

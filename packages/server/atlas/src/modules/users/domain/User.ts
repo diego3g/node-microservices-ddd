@@ -17,31 +17,31 @@ interface IUserProps {
 }
 
 export default class User extends AggregateRoot<IUserProps> {
-  get name() {
+  get name(): string {
     return this.props.name;
   }
 
-  get email() {
+  get email(): UserEmail {
     return this.props.email;
   }
 
-  get password() {
+  get password(): UserPassword {
     return this.props.password;
   }
 
-  get accessToken() {
+  get accessToken(): string {
     return this.props.accessToken;
   }
 
-  get lastLogin() {
+  get lastLogin(): Date {
     return this.props.lastLogin;
   }
 
-  public isLoggedIn() {
+  public isLoggedIn(): boolean {
     return !!this.props.accessToken;
   }
 
-  public setAccessToken(accessToken: string) {
+  public setAccessToken(accessToken: string): void {
     this.addDomainEvent(new UserLoggedInEvent(this));
 
     this.props.accessToken = accessToken;

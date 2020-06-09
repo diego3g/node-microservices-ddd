@@ -19,11 +19,11 @@ export default class UniqueEntityID {
     return id.toValue() === this.value;
   }
 
-  toString() {
+  toString(): string {
     return String(this.value);
   }
 
-  toValue() {
+  toValue(): string {
     return this.value;
   }
 }
