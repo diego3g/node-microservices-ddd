@@ -18,6 +18,6 @@ export default class AfterUserCreated implements IHandle<UserLoggedInEvent> {
   private async onUserLoggedInEvent(event: UserLoggedInEvent): Promise<void> {
     const { user } = event;
 
-    console.log('created', user);
+    console.log('logged in', user);
   }
 }

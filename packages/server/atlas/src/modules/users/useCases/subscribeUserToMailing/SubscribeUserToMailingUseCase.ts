@@ -1,6 +1,7 @@
 import { IUseCase } from '@core/domain/UseCase';
 import * as GenericAppError from '@core/logic/AppError';
 import Result, { failure, Either, success } from '@core/logic/Result';
+import Team from '@modules/users/domain/Team';
 import IUserRepo from '@modules/users/repositories/IUserRepo';
 import IUmbrielService from '@modules/users/services/umbriel/IUmbrielService';
 
@@ -32,7 +33,17 @@ export default class LoginUseCase
         return failure(new SubcribeUserToMailingErrors.UserNotFoundError());
       }
 
-      await this.umbrielService.addUserToTeam();
+      const teamOrError = Team.create({
+        title: 'Novo time',
+      });
+
+      if (teamOrError.isFailure) {
+        return failure(Result.fail(teamOrError.error));
+      }
+
+      const team = teamOrError.getValue();
+
+      await this.umbrielService.addUserToTeam(user, team);
 
       return success(Result.ok());
     } catch (err) {

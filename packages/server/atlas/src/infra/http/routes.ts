@@ -38,18 +38,12 @@ export default router;
 
 //   await producer.connect();
 
-//   const kafkaMessage = {
-//     user_id: user.id,
-//     email: user.email,
-//     team_id: 'xesque-no-bresquedele',
-//     team: 'starter',
-//   };
-
-//   await producer.send({
-//     topic: 'umbriel.add-user-to-team',
-//     compression: CompressionTypes.GZIP,
-//     messages: [{ value: JSON.stringify(kafkaMessage) }],
-//   });
+// const kafkaMessage = {
+//   user_id: user.id,
+//   email: user.email,
+//   team_id: 'xesque-no-bresquedele',
+//   team: 'starter',
+// };
 
 //   return response.json(user);
 // });
