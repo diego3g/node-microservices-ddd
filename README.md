@@ -5,6 +5,7 @@ This project aims to implement a monorepo Node.js microservice structure with DD
 ## Tools
 
 - TypeScript 💙
+- Babel (for builds);
 - Lerna & Yarn Workspaces (Monorepo structure);
 - Docker & Docker Compose (Setup environment);
 - Prisma (ORM replacement);
