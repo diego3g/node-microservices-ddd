@@ -5,7 +5,7 @@
   "main": "index.js",
   "license": "MIT",
   "scripts": {
-    "build": "babel src --root-mode upward --extensions \".js,.ts\" --ignore *.spec.ts --out-dir dist --copy-files",
+    "build": "babel src --root-mode upward --extensions \".js,.ts\" --out-dir dist --copy-files --no-copy-ignored",
     "start": "node dist/index.js",
     "dev": "ts-node-dev -r tsconfig-paths/register --respawn --transpileOnly --no-notify src/index.ts",
     "test": "jest"

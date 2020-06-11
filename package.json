@@ -10,7 +10,7 @@
   ],
   "nohoist": ["**/@prisma", "**/.prisma"],
   "scripts": {
-    "build:server": "lerna run build --scope @server/*",
+    "build:server": "lerna run build --scope @server/* --stream",
     "lint:fix": "eslint --fix packages --ext ts,tsx",
     "test": "jest"
   },

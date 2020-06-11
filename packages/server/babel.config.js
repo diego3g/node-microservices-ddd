@@ -20,5 +20,8 @@ module.exports = {
         "@config": "./src/config"
       }
     }]
+  ],
+  ignore: [
+    "**/*.spec.ts"
   ]
 };
