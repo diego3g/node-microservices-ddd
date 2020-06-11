@@ -71,6 +71,7 @@
         "newlinesBetween": "always", // new line between groups
         "groups": [
           "module",
+          "/^@server\/shared/",
           "/^@/",
           ["parent", "sibling", "index"]
         ],

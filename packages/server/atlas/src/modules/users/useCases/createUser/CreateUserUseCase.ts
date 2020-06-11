@@ -1,7 +1,3 @@
-import User from '@modules/users/domain/User';
-import UserEmail from '@modules/users/domain/UserEmail';
-import UserPassword from '@modules/users/domain/UserPassword';
-import IUserRepo from '@modules/users/repositories/IUserRepo';
 import { IUseCase } from '@server/shared/src/core/domain/UseCase';
 import * as GenericAppError from '@server/shared/src/core/logic/AppError';
 import Result, {
@@ -9,6 +5,11 @@ import Result, {
   Either,
   success,
 } from '@server/shared/src/core/logic/Result';
+
+import User from '@modules/users/domain/User';
+import UserEmail from '@modules/users/domain/UserEmail';
+import UserPassword from '@modules/users/domain/UserPassword';
+import IUserRepo from '@modules/users/repositories/IUserRepo';
 
 import * as CreateUserErrors from './CreateUserErrors';
 import ICreateUserDTO from './ICreateUserDTO';

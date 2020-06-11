@@ -1,6 +1,3 @@
-import Team from '@modules/users/domain/Team';
-import IUserRepo from '@modules/users/repositories/IUserRepo';
-import IUmbrielService from '@modules/users/services/umbriel/IUmbrielService';
 import { IUseCase } from '@server/shared/src/core/domain/UseCase';
 import * as GenericAppError from '@server/shared/src/core/logic/AppError';
 import Result, {
@@ -8,6 +5,10 @@ import Result, {
   Either,
   success,
 } from '@server/shared/src/core/logic/Result';
+
+import Team from '@modules/users/domain/Team';
+import IUserRepo from '@modules/users/repositories/IUserRepo';
+import IUmbrielService from '@modules/users/services/umbriel/IUmbrielService';
 
 import { ISubscribeUserToMailingDTO } from './ISubscribeUserToMailingDTO';
 import * as SubcribeUserToMailingErrors from './SubscribeUserToMailingErrors';

@@ -1,8 +1,9 @@
 import jwt from 'jsonwebtoken';
 
-import authConfig from '@config/auth';
 import Guard from '@server/shared/src/core/logic/Guard';
 import Result from '@server/shared/src/core/logic/Result';
+
+import authConfig from '@config/auth';
 
 interface IJWTProps {
   sub: string;

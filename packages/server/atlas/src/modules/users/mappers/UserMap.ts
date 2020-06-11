@@ -1,5 +1,6 @@
-import { User as PersistenceUser } from '@prisma/client';
 import UniqueEntityID from '@server/shared/src/core/domain/UniqueEntityID';
+
+import { User as PersistenceUser } from '.prisma/client';
 
 import User from '../domain/User';
 import UserEmail from '../domain/UserEmail';
@@ -33,7 +34,7 @@ export default class UserMap {
     return null;
   }
 
-  public static async toPersistence(user: User): Promise<PersistenceUser> {
+  public static async toPersistence(user: User): Promise<any> {
     return {
       id: user.id.toString(),
       name: user.name,

@@ -8,6 +8,7 @@
   "workspaces": [
     "packages/server/*"
   ],
+  "nohoist": ["**/@prisma", "**/.prisma"],
   "scripts": {
     "build:server": "lerna run build --scope @server/*",
     "lint:fix": "eslint --fix packages --ext ts,tsx",

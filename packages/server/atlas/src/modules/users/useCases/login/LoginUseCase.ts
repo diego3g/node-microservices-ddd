@@ -1,7 +1,3 @@
-import JWT from '@modules/users/domain/JWT';
-import UserEmail from '@modules/users/domain/UserEmail';
-import UserPassword from '@modules/users/domain/UserPassword';
-import IUserRepo from '@modules/users/repositories/IUserRepo';
 import DomainEvents from '@server/shared/src/core/domain/events/DomainEvents';
 import { IUseCase } from '@server/shared/src/core/domain/UseCase';
 import * as GenericAppError from '@server/shared/src/core/logic/AppError';
@@ -10,6 +6,11 @@ import Result, {
   Either,
   success,
 } from '@server/shared/src/core/logic/Result';
+
+import JWT from '@modules/users/domain/JWT';
+import UserEmail from '@modules/users/domain/UserEmail';
+import UserPassword from '@modules/users/domain/UserPassword';
+import IUserRepo from '@modules/users/repositories/IUserRepo';
 
 import { ILoginDTO, ILoginResponse } from './ILoginDTO';
 import * as LoginErrors from './LoginErrors';

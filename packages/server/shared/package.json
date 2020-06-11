@@ -9,6 +9,7 @@
     "test": "jest"
   },
   "dependencies": {
+    "express": "^4.17.1",
     "shallow-equal-object": "^1.1.1",
     "uuidv4": "^6.1.0"
   },
