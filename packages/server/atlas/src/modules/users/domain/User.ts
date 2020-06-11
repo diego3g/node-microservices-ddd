@@ -4,6 +4,7 @@ import Guard from '@server/shared/src/core/logic/Guard';
 import Result from '@server/shared/src/core/logic/Result';
 
 import UserCreatedEvent from './events/UserCreatedEvent';
+import UserEmailChangedEvent from './events/UserEmailChangedEvent';
 import UserLoggedInEvent from './events/UserLoggedInEvent';
 import UserEmail from './UserEmail';
 import UserPassword from './UserPassword';
@@ -46,6 +47,12 @@ export default class User extends AggregateRoot<IUserProps> {
 
     this.props.accessToken = accessToken;
     this.props.lastLogin = new Date();
+  }
+
+  public setEmail(email: UserEmail): void {
+    this.addDomainEvent(new UserEmailChangedEvent(this, this.props.email));
+
+    this.props.email = email;
   }
 
   private constructor(props: IUserProps, id?: UniqueEntityID) {
