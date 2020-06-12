@@ -6,6 +6,16 @@ import ContactMap from '@modules/contacts/mappers/ContactMap';
 import IContactRepo from '@modules/contacts/repositories/IContactRepo';
 
 export default class PrismaContactRepo implements IContactRepo {
+  async getContacts(): Promise<Contact[]> {
+    const rawContacts = await prisma.contact.findMany();
+
+    const domainContacts = rawContacts.map((contact) =>
+      ContactMap.toDomain(contact)
+    );
+
+    return domainContacts;
+  }
+
   async save(contact: Contact): Promise<void> {
     const data = ContactMap.toPersistence(contact);
 

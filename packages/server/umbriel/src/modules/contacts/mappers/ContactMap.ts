@@ -4,6 +4,7 @@ import { Contact as PersistenceContact } from '.prisma/client';
 
 import Contact from '../domain/Contact';
 import ContactEmail from '../domain/ContactEmail';
+import { IGetContactsResponseDTO } from '../useCases/contacts/getContacts/GetContactsDTO';
 
 export default class ContactMap {
   static toDomain(raw: PersistenceContact): Contact {
@@ -28,6 +29,13 @@ export default class ContactMap {
   }
 
   static toPersistence(contact: Contact): any {
+    return {
+      id: contact.id.toValue(),
+      email: contact.email.value,
+    };
+  }
+
+  static toDTO(contact: Contact): IGetContactsResponseDTO {
     return {
       id: contact.id.toValue(),
       email: contact.email.value,

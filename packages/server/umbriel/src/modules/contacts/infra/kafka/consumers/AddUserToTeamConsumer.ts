@@ -1,5 +1,5 @@
 import kafka from '@infra/kafka/client';
-import { subscribeContactUseCase } from '@modules/contacts/useCases/subscribeContact';
+import { subscribeContactUseCase } from '@modules/contacts/useCases/contacts/subscribeContact';
 
 interface IMessage {
   user: {
@@ -14,7 +14,7 @@ interface IMessage {
 
 export default class AddUserToTeamConsumer {
   constructor() {
-    this.setupConsumer();
+    // this.setupConsumer();
   }
 
   async setupConsumer(): Promise<void> {

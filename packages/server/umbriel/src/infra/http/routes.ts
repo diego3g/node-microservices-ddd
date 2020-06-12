@@ -1,9 +1,9 @@
 import express from 'express';
 
+import { contactsRouter } from '@modules/contacts/infra/http';
+
 const router = express.Router();
 
-router.use('/', (request, response) => {
-  return response.json({ hello: 'world' });
-});
+router.use('/contacts', contactsRouter);
 
 export default router;

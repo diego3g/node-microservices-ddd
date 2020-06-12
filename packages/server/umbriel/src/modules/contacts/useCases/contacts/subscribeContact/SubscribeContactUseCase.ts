@@ -10,13 +10,9 @@ import Contact from '@modules/contacts/domain/Contact';
 import ContactEmail from '@modules/contacts/domain/ContactEmail';
 import IContactRepo from '@modules/contacts/repositories/IContactRepo';
 
-import ISubscribeContactDTO from './ISubscribeContactDTO';
-import * as CreateUserErrors from './SubscribeContactErrors';
+import { ISubscribeContactDTO } from './SubscribeContactDTO';
 
-type Response = Either<
-  GenericAppError.UnexpectedError | CreateUserErrors.AccountAlreadyExists,
-  Result<void>
->;
+type Response = Either<GenericAppError.UnexpectedError, Result<void>>;
 
 export default class SubscribeContactUseCase
   implements IUseCase<ISubscribeContactDTO, Promise<Response>> {
