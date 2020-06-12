@@ -1,11 +1,11 @@
 import { ValueObject } from '@server/shared/src/core/domain/ValueObject';
-import Result from '@server/shared/src/core/logic/Result';
+import { Result } from '@server/shared/src/core/logic/Result';
 
 export interface IUserEmailProps {
   value: string;
 }
 
-export default class UserEmail extends ValueObject<IUserEmailProps> {
+export class UserEmail extends ValueObject<IUserEmailProps> {
   get value(): string {
     return this.props.value;
   }

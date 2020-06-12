@@ -1,6 +1,6 @@
-import Contact from '../domain/Contact';
+import { Contact } from '../domain/Contact';
 
-export default interface IContactRepo {
+export interface IContactRepo {
   getContacts(): Promise<Contact[]>;
   save(contact: Contact): Promise<void>;
 }

@@ -1,28 +1,29 @@
 import { IUseCase } from '@server/shared/src/core/domain/UseCase';
 import * as GenericAppError from '@server/shared/src/core/logic/AppError';
-import Result, {
+import {
+  Result,
   failure,
   Either,
   success,
 } from '@server/shared/src/core/logic/Result';
 
-import Contact from '@modules/contacts/domain/Contact';
-import ContactEmail from '@modules/contacts/domain/ContactEmail';
-import IContactRepo from '@modules/contacts/repositories/IContactRepo';
+import { Contact } from '@modules/contacts/domain/Contact';
+import { ContactEmail } from '@modules/contacts/domain/ContactEmail';
+import { IContactRepo } from '@modules/contacts/repositories/IContactRepo';
 
-import { ISubscribeContactDTO } from './SubscribeContactDTO';
+import { ISubscribeContactRequestDTO } from './SubscribeContactDTO';
 
 type Response = Either<GenericAppError.UnexpectedError, Result<void>>;
 
-export default class SubscribeContactUseCase
-  implements IUseCase<ISubscribeContactDTO, Promise<Response>> {
+export class SubscribeContactUseCase
+  implements IUseCase<ISubscribeContactRequestDTO, Promise<Response>> {
   private contactRepo: IContactRepo;
 
   constructor(contactRepo: IContactRepo) {
     this.contactRepo = contactRepo;
   }
 
-  async execute(request: ISubscribeContactDTO): Promise<Response> {
+  async execute(request: ISubscribeContactRequestDTO): Promise<Response> {
     const contactEmailOrError = ContactEmail.create(request.email);
 
     if (contactEmailOrError.isFailure) {

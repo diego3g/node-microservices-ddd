@@ -1,33 +1,34 @@
 import { IUseCase } from '@server/shared/src/core/domain/UseCase';
 import * as GenericAppError from '@server/shared/src/core/logic/AppError';
-import Result, {
+import {
+  Result,
   failure,
   Either,
   success,
 } from '@server/shared/src/core/logic/Result';
 
-import User from '@modules/users/domain/User';
-import UserEmail from '@modules/users/domain/UserEmail';
-import UserPassword from '@modules/users/domain/UserPassword';
-import IUserRepo from '@modules/users/repositories/IUserRepo';
+import { User } from '@modules/users/domain/User';
+import { UserEmail } from '@modules/users/domain/UserEmail';
+import { UserPassword } from '@modules/users/domain/UserPassword';
+import { IUserRepo } from '@modules/users/repositories/IUserRepo';
 
 import * as CreateUserErrors from './CreateUserErrors';
-import ICreateUserDTO from './ICreateUserDTO';
+import { ICreateUserRequestDTO } from './ICreateUserDTO';
 
 type Response = Either<
   GenericAppError.UnexpectedError | CreateUserErrors.AccountAlreadyExists,
   Result<void>
 >;
 
-export default class CreateUserUseCase
-  implements IUseCase<ICreateUserDTO, Promise<Response>> {
+export class CreateUserUseCase
+  implements IUseCase<ICreateUserRequestDTO, Promise<Response>> {
   private userRepo: IUserRepo;
 
   constructor(userRepo: IUserRepo) {
     this.userRepo = userRepo;
   }
 
-  async execute(request: ICreateUserDTO): Promise<Response> {
+  async execute(request: ICreateUserRequestDTO): Promise<Response> {
     const userEmailOrError = UserEmail.create(request.email);
     const userPasswordOrError = UserPassword.create({
       value: request.password,

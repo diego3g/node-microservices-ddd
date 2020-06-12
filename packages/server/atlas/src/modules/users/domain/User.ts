@@ -1,13 +1,13 @@
-import AggregateRoot from '@server/shared/src/core/domain/AggregateRoot';
-import UniqueEntityID from '@server/shared/src/core/domain/UniqueEntityID';
-import Guard from '@server/shared/src/core/logic/Guard';
-import Result from '@server/shared/src/core/logic/Result';
+import { AggregateRoot } from '@server/shared/src/core/domain/AggregateRoot';
+import { UniqueEntityID } from '@server/shared/src/core/domain/UniqueEntityID';
+import { Guard } from '@server/shared/src/core/logic/Guard';
+import { Result } from '@server/shared/src/core/logic/Result';
 
-import UserCreatedEvent from './events/UserCreatedEvent';
-import UserEmailChangedEvent from './events/UserEmailChangedEvent';
-import UserLoggedInEvent from './events/UserLoggedInEvent';
-import UserEmail from './UserEmail';
-import UserPassword from './UserPassword';
+import { UserCreatedEvent } from './events/UserCreatedEvent';
+import { UserEmailChangedEvent } from './events/UserEmailChangedEvent';
+import { UserLoggedInEvent } from './events/UserLoggedInEvent';
+import { UserEmail } from './UserEmail';
+import { UserPassword } from './UserPassword';
 
 interface IUserProps {
   name: string;
@@ -17,7 +17,7 @@ interface IUserProps {
   lastLogin?: Date;
 }
 
-export default class User extends AggregateRoot<IUserProps> {
+export class User extends AggregateRoot<IUserProps> {
   get name(): string {
     return this.props.name;
   }

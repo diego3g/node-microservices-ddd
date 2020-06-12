@@ -1,10 +1,10 @@
-import BaseController from '@server/shared/src/core/infra/BaseController';
+import { BaseController } from '@server/shared/src/core/infra/BaseController';
 
-import ContactMap from '@modules/contacts/mappers/ContactMap';
+import { ContactMap } from '@modules/contacts/mappers/ContactMap';
 
-import GetContactsUseCase from './GetContactsUseCase';
+import { GetContactsUseCase } from './GetContactsUseCase';
 
-export default class GetContactsController extends BaseController {
+export class GetContactsController extends BaseController {
   private useCase: GetContactsUseCase;
 
   constructor(useCase: GetContactsUseCase) {

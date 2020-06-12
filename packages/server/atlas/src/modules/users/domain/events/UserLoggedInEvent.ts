@@ -1,9 +1,9 @@
-import IDomainEvent from '@server/shared/src/core/domain/events/IDomainEvent';
-import UniqueEntityID from '@server/shared/src/core/domain/UniqueEntityID';
+import { IDomainEvent } from '@server/shared/src/core/domain/events/IDomainEvent';
+import { UniqueEntityID } from '@server/shared/src/core/domain/UniqueEntityID';
 
-import User from '../User';
+import { User } from '../User';
 
-export default class UserLoggedInEvent implements IDomainEvent {
+export class UserLoggedInEvent implements IDomainEvent {
   public dateTimeOccurred: Date;
 
   public user: User;

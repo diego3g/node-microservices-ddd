@@ -1,7 +1,7 @@
 import jwt from 'jsonwebtoken';
 
-import Guard from '@server/shared/src/core/logic/Guard';
-import Result from '@server/shared/src/core/logic/Result';
+import { Guard } from '@server/shared/src/core/logic/Guard';
+import { Result } from '@server/shared/src/core/logic/Result';
 
 import authConfig from '@config/auth';
 
@@ -14,7 +14,7 @@ interface IJWTPayload {
   email: string;
 }
 
-export default class JWT {
+export class JWT {
   public sub: string;
 
   public token: string;

@@ -1,18 +1,18 @@
 import { IUseCase } from '@server/shared/src/core/domain/UseCase';
 import * as GenericAppError from '@server/shared/src/core/logic/AppError';
-import Result, {
+import {
+  Result,
   failure,
   Either,
   success,
 } from '@server/shared/src/core/logic/Result';
 
-import Contact from '@modules/contacts/domain/Contact';
-import IContactRepo from '@modules/contacts/repositories/IContactRepo';
+import { Contact } from '@modules/contacts/domain/Contact';
+import { IContactRepo } from '@modules/contacts/repositories/IContactRepo';
 
 type Response = Either<GenericAppError.UnexpectedError, Result<Contact[]>>;
 
-export default class GetContactsUseCase
-  implements IUseCase<void, Promise<Response>> {
+export class GetContactsUseCase implements IUseCase<void, Promise<Response>> {
   private contactRepo: IContactRepo;
 
   constructor(contactRepo: IContactRepo) {

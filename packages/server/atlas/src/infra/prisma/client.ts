@@ -1,7 +1,7 @@
 import { PrismaClient } from '.prisma/client';
 
-const client = new PrismaClient({
+const prisma = new PrismaClient({
   log: ['query'],
 });
 
-export default client;
+export { prisma };

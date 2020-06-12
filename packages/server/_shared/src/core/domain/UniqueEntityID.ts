@@ -1,6 +1,6 @@
 import { uuid } from 'uuidv4';
 
-export default class UniqueEntityID {
+export class UniqueEntityID {
   private value: string;
 
   constructor(id?: string) {

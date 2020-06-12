@@ -1,3 +1,3 @@
-import UmbrielService from './umbriel/implementations/UmbrielService';
+import { UmbrielService } from './umbriel/implementations/UmbrielService';
 
 export { UmbrielService };

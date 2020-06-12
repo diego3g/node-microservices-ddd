@@ -1,7 +1,7 @@
-import PrismaContactRepo from '@modules/contacts/infra/prisma/PrismaContactRepo';
+import { PrismaContactRepo } from '@modules/contacts/infra/prisma/PrismaContactRepo';
 
-import GetContactsController from './GetContactsController';
-import GetContactsUseCase from './GetContactsUseCase';
+import { GetContactsController } from './GetContactsController';
+import { GetContactsUseCase } from './GetContactsUseCase';
 
 const prismaContactRepo = new PrismaContactRepo();
 

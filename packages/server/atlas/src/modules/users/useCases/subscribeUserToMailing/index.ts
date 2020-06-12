@@ -1,7 +1,7 @@
-import PrismaUserRepo from '@modules/users/infra/prisma/PrismaUserRepo';
+import { PrismaUserRepo } from '@modules/users/infra/prisma/PrismaUserRepo';
 import { UmbrielService } from '@modules/users/services';
 
-import SubscribeUserToMailingUseCase from './SubscribeUserToMailingUseCase';
+import { SubscribeUserToMailingUseCase } from './SubscribeUserToMailingUseCase';
 
 const prismaUserRepo = new PrismaUserRepo();
 const umbrielService = new UmbrielService();

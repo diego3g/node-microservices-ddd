@@ -1,11 +1,11 @@
-import DomainEvents from '@server/shared/src/core/domain/events/DomainEvents';
+import { DomainEvents } from '@server/shared/src/core/domain/events/DomainEvents';
 
-import prisma from '@infra/prisma/client';
-import Contact from '@modules/contacts/domain/Contact';
-import ContactMap from '@modules/contacts/mappers/ContactMap';
-import IContactRepo from '@modules/contacts/repositories/IContactRepo';
+import { prisma } from '@infra/prisma/client';
+import { Contact } from '@modules/contacts/domain/Contact';
+import { ContactMap } from '@modules/contacts/mappers/ContactMap';
+import { IContactRepo } from '@modules/contacts/repositories/IContactRepo';
 
-export default class PrismaContactRepo implements IContactRepo {
+export class PrismaContactRepo implements IContactRepo {
   async getContacts(): Promise<Contact[]> {
     const rawContacts = await prisma.contact.findMany();
 

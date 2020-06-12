@@ -1,8 +1,8 @@
-export interface ILoginDTO {
+export interface ILoginRequestDTO {
   email: string;
   password: string;
 }
 
-export interface ILoginResponse {
+export interface ILoginResponseDTO {
   token: string;
 }

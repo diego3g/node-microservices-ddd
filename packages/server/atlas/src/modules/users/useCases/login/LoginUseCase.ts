@@ -1,36 +1,37 @@
-import DomainEvents from '@server/shared/src/core/domain/events/DomainEvents';
+import { DomainEvents } from '@server/shared/src/core/domain/events/DomainEvents';
 import { IUseCase } from '@server/shared/src/core/domain/UseCase';
 import * as GenericAppError from '@server/shared/src/core/logic/AppError';
-import Result, {
+import {
+  Result,
   failure,
   Either,
   success,
 } from '@server/shared/src/core/logic/Result';
 
-import JWT from '@modules/users/domain/JWT';
-import UserEmail from '@modules/users/domain/UserEmail';
-import UserPassword from '@modules/users/domain/UserPassword';
-import IUserRepo from '@modules/users/repositories/IUserRepo';
+import { JWT } from '@modules/users/domain/JWT';
+import { UserEmail } from '@modules/users/domain/UserEmail';
+import { UserPassword } from '@modules/users/domain/UserPassword';
+import { IUserRepo } from '@modules/users/repositories/IUserRepo';
 
-import { ILoginDTO, ILoginResponse } from './ILoginDTO';
+import { ILoginRequestDTO, ILoginResponseDTO } from './ILoginDTO';
 import * as LoginErrors from './LoginErrors';
 
 type Response = Either<
   | GenericAppError.UnexpectedError
   | LoginErrors.UserNameDoesntExistError
   | LoginErrors.PasswordDoesntMatchError,
-  Result<ILoginResponse>
+  Result<ILoginResponseDTO>
 >;
 
-export default class LoginUseCase
-  implements IUseCase<ILoginDTO, Promise<Response>> {
+export class LoginUseCase
+  implements IUseCase<ILoginRequestDTO, Promise<Response>> {
   private userRepo: IUserRepo;
 
   constructor(userRepo: IUserRepo) {
     this.userRepo = userRepo;
   }
 
-  async execute(request: ILoginDTO): Promise<Response> {
+  async execute(request: ILoginRequestDTO): Promise<Response> {
     try {
       const userEmailOrError = UserEmail.create(request.email);
       const userPasswordOrError = UserPassword.create({

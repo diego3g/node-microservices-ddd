@@ -1,12 +1,12 @@
-import UniqueEntityID from '@server/shared/src/core/domain/UniqueEntityID';
+import { UniqueEntityID } from '@server/shared/src/core/domain/UniqueEntityID';
 
 import { Contact as PersistenceContact } from '.prisma/client';
 
-import Contact from '../domain/Contact';
-import ContactEmail from '../domain/ContactEmail';
+import { Contact } from '../domain/Contact';
+import { ContactEmail } from '../domain/ContactEmail';
 import { IGetContactsResponseDTO } from '../useCases/contacts/getContacts/GetContactsDTO';
 
-export default class ContactMap {
+export class ContactMap {
   static toDomain(raw: PersistenceContact): Contact {
     const contactEmailOrError = ContactEmail.create(raw.email);
 

@@ -1,6 +1,6 @@
 import * as express from 'express';
 
-export default abstract class BaseController {
+export abstract class BaseController {
   protected request: express.Request;
 
   protected response: express.Response;

@@ -1,10 +1,10 @@
-import BaseController from '@server/shared/src/core/infra/BaseController';
+import { BaseController } from '@server/shared/src/core/infra/BaseController';
 
 import * as CreateUserErrors from './CreateUserErrors';
-import CreateUserUseCase from './CreateUserUseCase';
-import ICreateUserDTO from './ICreateUserDTO';
+import { CreateUserUseCase } from './CreateUserUseCase';
+import { ICreateUserRequestDTO } from './ICreateUserDTO';
 
-export default class CreateUserController extends BaseController {
+export class CreateUserController extends BaseController {
   private useCase: CreateUserUseCase;
 
   constructor(useCase: CreateUserUseCase) {
@@ -14,7 +14,7 @@ export default class CreateUserController extends BaseController {
   }
 
   protected async executeImpl(): Promise<any> {
-    const dto = this.request.body as ICreateUserDTO;
+    const dto = this.request.body as ICreateUserRequestDTO;
 
     try {
       const result = await this.useCase.execute(dto);

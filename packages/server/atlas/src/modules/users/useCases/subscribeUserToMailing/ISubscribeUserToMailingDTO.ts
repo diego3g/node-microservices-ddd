@@ -1,3 +1,3 @@
-export interface ISubscribeUserToMailingDTO {
+export interface ISubscribeUserToMailingRequestDTO {
   userId: string;
 }

@@ -1,22 +1,23 @@
 import { IUseCase } from '@server/shared/src/core/domain/UseCase';
 import * as GenericAppError from '@server/shared/src/core/logic/AppError';
-import Result, {
+import {
+  Result,
   failure,
   Either,
   success,
 } from '@server/shared/src/core/logic/Result';
 
-import Team from '@modules/users/domain/Team';
-import IUserRepo from '@modules/users/repositories/IUserRepo';
-import IUmbrielService from '@modules/users/services/umbriel/IUmbrielService';
+import { Team } from '@modules/users/domain/Team';
+import { IUserRepo } from '@modules/users/repositories/IUserRepo';
+import { IUmbrielService } from '@modules/users/services/umbriel/IUmbrielService';
 
-import { ISubscribeUserToMailingDTO } from './ISubscribeUserToMailingDTO';
+import { ISubscribeUserToMailingRequestDTO } from './ISubscribeUserToMailingDTO';
 import * as SubcribeUserToMailingErrors from './SubscribeUserToMailingErrors';
 
 type Response = Either<GenericAppError.UnexpectedError, Result<void>>;
 
-export default class LoginUseCase
-  implements IUseCase<ISubscribeUserToMailingDTO, Promise<Response>> {
+export class SubscribeUserToMailingUseCase
+  implements IUseCase<ISubscribeUserToMailingRequestDTO, Promise<Response>> {
   private userRepo: IUserRepo;
 
   private umbrielService: IUmbrielService;
@@ -26,7 +27,7 @@ export default class LoginUseCase
     this.umbrielService = umbrielService;
   }
 
-  async execute(request: ISubscribeUserToMailingDTO): Promise<Response> {
+  async execute(request: ISubscribeUserToMailingRequestDTO): Promise<Response> {
     try {
       const { userId } = request;
 

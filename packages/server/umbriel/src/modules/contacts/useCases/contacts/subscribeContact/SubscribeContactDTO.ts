@@ -1,3 +1,3 @@
-export interface ISubscribeContactDTO {
+export interface ISubscribeContactRequestDTO {
   email: string;
 }

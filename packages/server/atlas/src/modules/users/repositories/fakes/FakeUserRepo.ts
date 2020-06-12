@@ -1,7 +1,7 @@
-import User from '@modules/users/domain/User';
-import UserEmail from '@modules/users/domain/UserEmail';
+import { User } from '@modules/users/domain/User';
+import { UserEmail } from '@modules/users/domain/UserEmail';
 
-import IUserRepo from '../IUserRepo';
+import { IUserRepo } from '../IUserRepo';
 
 export default class FakeUserRepo implements IUserRepo {
   private users: User[] = [];

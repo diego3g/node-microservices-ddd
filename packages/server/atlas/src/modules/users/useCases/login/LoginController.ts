@@ -1,10 +1,10 @@
-import BaseController from '@server/shared/src/core/infra/BaseController';
+import { BaseController } from '@server/shared/src/core/infra/BaseController';
 
-import { ILoginDTO } from './ILoginDTO';
+import { ILoginRequestDTO } from './ILoginDTO';
 import * as LoginErrors from './LoginErrors';
-import LoginUseCase from './LoginUseCase';
+import { LoginUseCase } from './LoginUseCase';
 
-export default class LoginController extends BaseController {
+export class LoginController extends BaseController {
   private useCase: LoginUseCase;
 
   constructor(useCase: LoginUseCase) {
@@ -14,7 +14,7 @@ export default class LoginController extends BaseController {
   }
 
   async executeImpl(): Promise<any> {
-    const dto = this.request.body as ILoginDTO;
+    const dto = this.request.body as ILoginRequestDTO;
 
     try {
       const result = await this.useCase.execute(dto);

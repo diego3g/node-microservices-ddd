@@ -1,10 +1,9 @@
-import DomainEvents from '@server/shared/src/core/domain/events/DomainEvents';
+import { DomainEvents } from '@server/shared/src/core/domain/events/DomainEvents';
 import { IHandle } from '@server/shared/src/core/domain/events/IHandle';
 
-import UserEmailChangedEvent from '../domain/events/UserEmailChangedEvent';
+import { UserEmailChangedEvent } from '../domain/events/UserEmailChangedEvent';
 
-export default class AfterUserEmailChanged
-  implements IHandle<UserEmailChangedEvent> {
+export class AfterUserEmailChanged implements IHandle<UserEmailChangedEvent> {
   constructor() {
     this.setupSubscriptions();
   }

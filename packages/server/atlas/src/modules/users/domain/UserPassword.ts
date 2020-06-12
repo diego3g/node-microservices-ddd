@@ -1,15 +1,15 @@
 import bcrypt from 'bcryptjs';
 
 import { ValueObject } from '@server/shared/src/core/domain/ValueObject';
-import Guard from '@server/shared/src/core/logic/Guard';
-import Result from '@server/shared/src/core/logic/Result';
+import { Guard } from '@server/shared/src/core/logic/Guard';
+import { Result } from '@server/shared/src/core/logic/Result';
 
 interface IUserPasswordProps {
   value: string;
   hashed?: boolean;
 }
 
-export default class UserPassword extends ValueObject<IUserPasswordProps> {
+export class UserPassword extends ValueObject<IUserPasswordProps> {
   get value(): string {
     return this.props.value;
   }

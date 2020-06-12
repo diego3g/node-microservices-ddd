@@ -10,7 +10,7 @@ export interface IGuardArgument {
 
 export type GuardArgumentCollection = IGuardArgument[];
 
-export default class Guard {
+export class Guard {
   public static combine(guardResults: IGuardResult[]): IGuardResult {
     for (const result of guardResults) {
       if (result.succeeded === false) {

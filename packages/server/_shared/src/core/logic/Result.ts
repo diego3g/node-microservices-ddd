@@ -1,4 +1,4 @@
-export default class Result<T> {
+export class Result<T> {
   public isSuccess: boolean;
 
   public isFailure: boolean;

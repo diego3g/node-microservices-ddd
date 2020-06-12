@@ -1,7 +1,7 @@
-import PrismaUserRepo from '@modules/users/infra/prisma/PrismaUserRepo';
+import { PrismaUserRepo } from '@modules/users/infra/prisma/PrismaUserRepo';
 
-import LoginController from './LoginController';
-import LoginUseCase from './LoginUseCase';
+import { LoginController } from './LoginController';
+import { LoginUseCase } from './LoginUseCase';
 
 const prismaUserRepo = new PrismaUserRepo();
 

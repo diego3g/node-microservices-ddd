@@ -1,10 +1,10 @@
-import IDomainEvent from '@server/shared/src/core/domain/events/IDomainEvent';
-import UniqueEntityID from '@server/shared/src/core/domain/UniqueEntityID';
+import { IDomainEvent } from '@server/shared/src/core/domain/events/IDomainEvent';
+import { UniqueEntityID } from '@server/shared/src/core/domain/UniqueEntityID';
 
-import User from '../User';
-import UserEmail from '../UserEmail';
+import { User } from '../User';
+import { UserEmail } from '../UserEmail';
 
-export default class UserEmailChangedEvent implements IDomainEvent {
+export class UserEmailChangedEvent implements IDomainEvent {
   public dateTimeOccurred: Date;
 
   public lastEmail: UserEmail;

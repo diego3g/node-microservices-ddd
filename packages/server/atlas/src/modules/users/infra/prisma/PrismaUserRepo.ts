@@ -1,12 +1,12 @@
-import DomainEvents from '@server/shared/src/core/domain/events/DomainEvents';
+import { DomainEvents } from '@server/shared/src/core/domain/events/DomainEvents';
 
-import prisma from '@infra/prisma/client';
-import User from '@modules/users/domain/User';
-import UserEmail from '@modules/users/domain/UserEmail';
-import UserMap from '@modules/users/mappers/UserMap';
-import IUserRepo from '@modules/users/repositories/IUserRepo';
+import { prisma } from '@infra/prisma/client';
+import { User } from '@modules/users/domain/User';
+import { UserEmail } from '@modules/users/domain/UserEmail';
+import { UserMap } from '@modules/users/mappers/UserMap';
+import { IUserRepo } from '@modules/users/repositories/IUserRepo';
 
-export default class PrismaUserRepo implements IUserRepo {
+export class PrismaUserRepo implements IUserRepo {
   async findByEmail(email: string | UserEmail): Promise<User> {
     const rawUser = await prisma.user.findOne({
       where: {

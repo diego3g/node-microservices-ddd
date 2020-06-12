@@ -1,10 +1,10 @@
 import client from '@infra/kafka/client';
-import Team from '@modules/users/domain/Team';
-import User from '@modules/users/domain/User';
+import { Team } from '@modules/users/domain/Team';
+import { User } from '@modules/users/domain/User';
 
-import IUmbrielService from '../IUmbrielService';
+import { IUmbrielService } from '../IUmbrielService';
 
-export default class UmbrielService implements IUmbrielService {
+export class UmbrielService implements IUmbrielService {
   async addUserToTeam(user: User, team: Team): Promise<void> {
     const userWithTeamMessage = {
       user: {
