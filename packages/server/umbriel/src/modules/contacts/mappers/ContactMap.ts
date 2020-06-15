@@ -28,7 +28,9 @@ export class ContactMap {
     return null;
   }
 
-  static toPersistence(contact: Contact): any {
+  static toPersistence(
+    contact: Contact
+  ): Pick<PersistenceContact, 'id' | 'email'> {
     return {
       id: contact.id.toValue(),
       email: contact.email.value,

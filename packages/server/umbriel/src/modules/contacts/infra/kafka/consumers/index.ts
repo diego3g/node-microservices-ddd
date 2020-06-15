@@ -1,3 +1,3 @@
-import AddUserToTeamConsumer from './AddUserToTeamConsumer';
+import { AddUserToTeamConsumer } from './AddUserToTeamConsumer';
 
 new AddUserToTeamConsumer();

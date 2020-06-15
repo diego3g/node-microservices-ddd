@@ -1,4 +1,6 @@
-import kafka from '@infra/kafka/client';
+import { convertTextToSlug } from '@server/shared/src/utils/convertTextToSlug';
+
+import { kafka } from '@infra/kafka/client';
 import { subscribeContactUseCase } from '@modules/contacts/useCases/contacts/subscribeContact';
 
 interface IMessage {
@@ -6,13 +8,13 @@ interface IMessage {
     id: string;
     email: string;
   };
-  team: {
+  teams: Array<{
     id: string;
     title: string;
-  };
+  }>;
 }
 
-export default class AddUserToTeamConsumer {
+export class AddUserToTeamConsumer {
   constructor() {
     // this.setupConsumer();
   }
@@ -32,8 +34,14 @@ export default class AddUserToTeamConsumer {
       async eachMessage({ message }) {
         const data: IMessage = JSON.parse(message.value.toString());
 
-        subscribeContactUseCase.execute({
+        await subscribeContactUseCase.execute({
           email: data.user.email,
+          tags: data.teams.map((team) => {
+            return {
+              title: team.title,
+              integrationId: team.id,
+            };
+          }),
         });
       },
     });

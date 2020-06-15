@@ -1,3 +1,4 @@
 # Prisma Migrate lockfile v1
 
 20200609124237-create_base_templates
+20200611222402-add_slug_to_tags
