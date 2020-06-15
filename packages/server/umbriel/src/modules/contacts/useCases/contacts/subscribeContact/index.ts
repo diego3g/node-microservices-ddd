@@ -2,6 +2,7 @@ import { PrismaContactRepo } from '@modules/contacts/infra/prisma/PrismaContactR
 import { PrismaContactSubscriptionsRepo } from '@modules/contacts/infra/prisma/PrismaContactSubscriptionsRepo';
 import { PrismaTagRepo } from '@modules/contacts/infra/prisma/PrismaTagRepo';
 
+import { SubscribeContactController } from './SubscribeContactController';
 import { SubscribeContactUseCase } from './SubscribeContactUseCase';
 
 const prismaContactSubscriptionRepo = new PrismaContactSubscriptionsRepo();
@@ -13,4 +14,8 @@ const subscribeContactUseCase = new SubscribeContactUseCase(
   prismaTagRepo
 );
 
-export { subscribeContactUseCase };
+const subscribeContactController = new SubscribeContactController(
+  subscribeContactUseCase
+);
+
+export { subscribeContactUseCase, subscribeContactController };
